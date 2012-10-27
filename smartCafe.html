@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>CampusCafe</title>
+		<style type="text/css" media="all">
+			@import "css/style.css";
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="nav">
+
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<td width="116">
+								<a href="#"><img src="images/logo.png" width="116" height="70" border="0" alt="Campus Cofe Home" id="logo" class="png"></a>
+							</td>
+							<td>
+								<div id="menu">
+									<ul class="tabs">
+										<li>
+											<a href="#" onmouseover="cafe.src='images/cafe2.png';" onmouseout="cafe.src='images/cafe1.png';" class="png">
+												<img src="images/cafe1.png" alt="cafe" name="cafe" width="117" height="67" border="0" id="cafe" class="png">
+											</a>
+										</li>
+										<li>
+											<a href="#" onmouseover="forum.src='images/forum2.png';" onmouseout="forum.src='images/forum1.png';" class="png">
+												<img src="images/forum1.png" alt="forum" name="forum" width="85" height="67" border="0" id="forum" class="png">
+											</a>
+										</li>
+										
+										<li>
+											<a href="#" onmouseover="status.src='images/status2.png';" onmouseout="status.src='images/status1.png';" class="png">
+												<img src="images/status1.png" alt="MyStatus" name="status" width="117" height="67" border="0" id="status" class="png">
+											</a>
+										</li>
+									</ul>
+								</div>
+							</td>
+							
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id="content">
+				<div id="top"></div>
+				
+				<div id="middle-container">
+				
+					<div id = "cafeInfo">
+						<h1>SmartCafe</h1>
+							<p>Open Daily: 9am-9pm<br/>Located on Building E<br/>408-555-5555</p>
+						<p></p>
+					</div>						
+			
+					<div id = "cafeMenu">
+						<table class="cafeTable">
+							<caption>On the Menu</caption>
+							<tr><th>Item</th><th>Photo</th><th>Description</th><th>Reg GF Veg</th><th>Calories</th><th>Price</th><th>Order Qty</th></tr>
+							
+							<tr><th>Main Dishes</th>
+							<tr><td>Salmon &amp; Greens</td>
+								<td></td>
+								<td>Wild caught salmon with seasonal vegetables and creamy sauce</td>
+								<td></td>
+								<td>500</td>
+								<td>$6.00</td>
+								<td>
+									<form action= ""><select name="qty"><option value="1">One</option></select></form></td>
+							</tr>
+							<tr><th>Sandwiches</th></tr>
+							<tr><th>Salads</th></tr>
+							<tr><th>Treats</th></tr>
+						</table>
+					</div>
+					<div id = "personal">	
+						<div id = "nutritionalTracking">
+							<table class="cafeTable">
+								<caption> Nutritional Tracking</caption>
+								<tr><td>Daily Calories Allowed</td><td></td></tr>
+								<tr><td>Total Calories Consumed Today</td><td></td></tr>
+								<tr><td>Total Calories This Order</td><td></td></tr>
+								<tr><td>Preferred Meal Type</td><td></td></tr>								
+							</table>						
+						</div>				
+						<div id = "budgetTracking">
+							<table class="cafeTable">
+								<caption>Budget Tracking</caption>
+								<tr><td>Monthly Budget</td><td></td></tr>
+								<tr><td>Balance Available</td><td></td></tr>
+								<tr><td>Total this Order</td><td></td></tr>
+								<tr><td>Some Other Field</td><td></td></tr>
+							</table>							
+						</div>				
+	
+					</div>							
+
+					<div id="orderDetails">
+						<table class="cafeTable">
+							<caption>Your Order Details</caption>
+							<tr><td>Subtotal</td><td></td></tr>
+							<tr><td>Discount (10% if registered)</td><td></td></tr>
+							<tr><td>Tax (8.25%)</td><td></td></tr>
+							<tr><td>Delivery</td><td></td></tr>
+							<tr><td>Total</td><td></td></tr>
+						</table>
+					</div>
+					
+					<div id="deliveryOptions" >
+						<table class="cafeTable">
+							<caption>Delivery Options</caption>
+							<tr>
+								<td>
+									<form>
+										<input type= "radio" name= "deliveryopt" value= "Pickup">Pickup<br><br>
+										<input type= "radio" name= "deliveryopt" value= "Delivery">Deliver (add $1.00)
+									</form>
+								</td>
+								<td>Name<br/><br/>
+									<form action="">
+									<label for="building">Bldg</label>
+									<select name="Bldg"><option value="1">1</option></select>
+									<label for="room">Room</label>
+									<select name="Room"><option value="1">1</option></select>
+									</form>						
+								</td>
+							</tr>														
+						</table>
+					</div>	
+					<div id="reviewOrder">
+						<form id="continueOrder" action="">
+							<p id="sp"><input id="btn" type="button" value="Review Order"></p>
+						</form>
+					</div>
+
+				</div>
+				
+				<div id="bot"> COEN 276 2012 Fall.  Group P.&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">About Us</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Contact Us</a>&nbsp;&nbsp;&nbsp;	</div>
+				
+			</div>
+		</div>
+
+	</body>
+</html>
