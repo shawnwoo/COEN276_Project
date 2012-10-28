@@ -183,3 +183,8 @@ http://rockablethemes.com
 .accordion li:target > .sub-menu {
 	display: block;
 }
+
+.accordion p{
+	font:normal 11px/15px Arial,sans-serif;
+	margin-left:5px;
+}
