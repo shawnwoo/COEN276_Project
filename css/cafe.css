@@ -1,0 +1,97 @@
+.cafeHorizontal{
+	position:relative;
+	width:900px;
+	padding:20px;
+	margin-left:auto;
+	margin-right:auto;
+	border:1px solid red;
+	overflow:hidden;
+}
+
+
+#cafeInfo{
+	height: 130px;
+	text-align: center;	
+}
+
+
+.item{
+	float:left;
+	height:170px;
+	width:170px;
+	margin-left:25px;
+	margin-right:25px;
+	margin-bottom:25px;
+	border:1px solid black;
+	overflow:hidden;
+}
+
+.foodImg{
+	height:145px;
+	widht:170px;
+}
+
+.price{
+	
+}
+
+.type{
+	
+}
+
+.itemFooter{
+	height:25px;
+	width:170px;
+	border:1px solid red;
+}
+
+
+.cafeTable{
+	width:100%;	
+	border:1px solid black;
+}
+
+
+.cafeTable td{
+	border:1px solid black;
+	width:100px;
+	padding:5px;
+}
+
+
+.cafeTable caption{
+	caption-side:top;
+	font-size:18px;
+	font-weight:bold;
+}
+
+
+#personal{
+	height:190px;
+}
+
+
+.horizontalLeft{
+	position:relative;
+	margin:0px;
+	left:0px;
+	height:200px;
+	width: 47%;
+	padding:0px;
+	border:1px solid red;
+}
+
+
+.horizontalRight{
+	float:right;
+	margin-top:0px;
+	height:200px;
+	width: 47%;
+	padding:0px;
+	border:1px solid red;
+}
+
+
+#reviewOrder{
+	height: 50px;
+}

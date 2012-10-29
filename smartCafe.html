@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>CampusCafe</title>
+		<title>Smart Cafe</title>
 		<style type="text/css" media="all">
 			@import "css/style.css";
 			@import "css/cafe.css";
@@ -51,34 +51,47 @@
 				
 				<div id="middle-container">
 				
-					<div id = "cafeInfo">
+					<div id = "cafeInfo" class= "cafeHorizontal">
 						<h1>SmartCafe</h1>
 							<p>Open Daily: 9am-9pm<br/>Located on Building E<br/>408-555-5555</p>
 						<p></p>
 					</div>						
 			
-					<div id = "cafeMenu">
-						<table class="cafeTable">
-							<caption>On the Menu</caption>
-							<tr><th>Item</th><th>Photo</th><th>Description</th><th>Reg GF Veg</th><th>Calories</th><th>Price</th><th>Order Qty</th></tr>
-							
-							<tr><th>Main Dishes</th>
-							<tr><td>Salmon &amp; Greens</td>
-								<td></td>
-								<td>Wild caught salmon with seasonal vegetables and creamy sauce</td>
-								<td></td>
-								<td>500</td>
-								<td>$6.00</td>
-								<td>
-									<form action= ""><select name="qty"><option value="1">One</option></select></form></td>
-							</tr>
-							<tr><th>Sandwiches</th></tr>
-							<tr><th>Salads</th></tr>
-							<tr><th>Treats</th></tr>
-						</table>
+					<div class= "cafeHorizontal">
+						<p> Main Dishes </p>
+						<div class="item">
+							<img class="foodImg" title="" src="" alt=""/>
+							<div class="itemFooter">
+								<span>Description</span><span>calories</span><span>Order</span><span>Qty</span>
+							</div>
+						</div> <div class="item">
+						</div> <div class="item"></div> <div class="item"></div>
+						
 					</div>
-					<div id = "personal">	
-						<div id = "nutritionalTracking">
+					
+					<div class= "cafeHorizontal">
+						<p> Sandwiches </p>
+						<div class="item">
+						</div>
+						<div class="item"></div>
+						<div class="item"></div>
+						<div class="item"></div>
+					</div>
+					
+					<div class= "cafeHorizontal">
+						<p> Treats </p>
+						<div class="item"></div> <div class="item"></div> <div class="item"></div> <div class="item"></div>
+					</div>
+					
+					<div class= "cafeHorizontal">
+						<p> Drinks</p>
+						<div class="item"></div> <div class="item"></div> <div class="item"></div> <div class="item"></div>
+					</div>
+					
+					
+					
+					<div id = "personal"  class= "cafeHorizontal">	
+						<div class="horizontalRight">
 							<table class="cafeTable">
 								<caption> Nutritional Tracking</caption>
 								<tr><td>Daily Calories Allowed</td><td></td></tr>
@@ -87,7 +100,7 @@
 								<tr><td>Preferred Meal Type</td><td></td></tr>								
 							</table>						
 						</div>				
-						<div id = "budgetTracking">
+						<div class="horizontalLeft">
 							<table class="cafeTable">
 								<caption>Budget Tracking</caption>
 								<tr><td>Monthly Budget</td><td></td></tr>
@@ -98,40 +111,57 @@
 						</div>				
 	
 					</div>							
+					<div class= "cafeHorizontal">
+						<div class = "horizontalRight">
+							<table class="cafeTable">
+								<caption>Your Order Details</caption>
+								<tr>
+									<td>Subtotal</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>Discount (10% if registered)</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>Tax (8.25%)</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>Delivery</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>Total</td>
+									<td></td>
+								</tr>
+							</table>
+						</div>
 
-					<div id="orderDetails">
-						<table class="cafeTable">
-							<caption>Your Order Details</caption>
-							<tr><td>Subtotal</td><td></td></tr>
-							<tr><td>Discount (10% if registered)</td><td></td></tr>
-							<tr><td>Tax (8.25%)</td><td></td></tr>
-							<tr><td>Delivery</td><td></td></tr>
-							<tr><td>Total</td><td></td></tr>
-						</table>
-					</div>
-					
-					<div id="deliveryOptions" >
-						<table class="cafeTable">
-							<caption>Delivery Options</caption>
-							<tr>
-								<td>
-									<form>
-										<input type= "radio" name= "deliveryopt" value= "Pickup">Pickup<br><br>
-										<input type= "radio" name= "deliveryopt" value= "Delivery">Deliver (add $1.00)
-									</form>
-								</td>
-								<td>Name<br/><br/>
-									<form action="">
-									<label for="building">Bldg</label>
-									<select name="Bldg"><option value="1">1</option></select>
-									<label for="room">Room</label>
-									<select name="Room"><option value="1">1</option></select>
-									</form>						
-								</td>
-							</tr>														
-						</table>
+						<div class="horizontalLeft">
+							<table class="cafeTable">
+								<caption>Delivery Options</caption>
+								<tr>
+									<td>
+										<form>
+											<input type="radio" name="deliveryopt" value="Pickup">Pickup<br>
+											<br> <input type="radio" name="deliveryopt"
+											value="Delivery">Deliver (add $1.00)
+										</form>
+									</td>
+									<td>Name<br />
+									<br />
+										<form action="">
+											<label for="building">Bldg</label> <select name="Bldg"><option
+												value="1">1</option></select> <label for="room">Room</label> <select
+												name="Room"><option value="1">1</option></select>
+										</form>
+									</td>
+								</tr>
+							</table>
+						</div>
 					</div>	
-					<div id="reviewOrder">
+					<div id="reviewOrder"  class= "cafeHorizontal">
 						<form id="continueOrder" action="">
 							<p id="sp"><input id="btn" type="button" value="Review Order"></p>
 						</form>
