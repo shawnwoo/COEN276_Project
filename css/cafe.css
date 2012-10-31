@@ -45,6 +45,12 @@
 	border:1px solid red;
 }
 
+.descrip{
+	display:block;
+	width:5em;
+	border:1px solid red;
+}
+
 
 .cafeTable{
 	width:100%;	
@@ -63,6 +69,10 @@
 	caption-side:top;
 	font-size:18px;
 	font-weight:bold;
+}
+
+#cafeImg{
+	float:right;
 }
 
 
