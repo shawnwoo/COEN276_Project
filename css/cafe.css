@@ -42,14 +42,35 @@
 .itemFooter{
 	height:25px;
 	width:170px;
-	border:1px solid red;
+	border:1px solid black;
 }
 
 .descrip{
-	display:block;
-	width:5em;
-	border:1px solid red;
+	padding-top:2px;
+	padding-bottom:3px;
+	float:left;
+	width:2em;
+	/*border:1px solid red;*/
+	text-align:center;
 }
+
+.cal{
+	padding-top:2px;
+	padding-bottom:3px;
+	float:left;
+	width:3em;
+	/*border:1px solid red;*/
+	text-align:right;
+}
+
+.order{
+	padding-top:0px;
+	float:left;
+	width:7em;
+	/*border:1px solid red;*/
+	text-align:right;
+}
+
 
 
 .cafeTable{
