@@ -65,3 +65,12 @@ create table users(
 );
 
 insert into users values(12345, 500, 2500.00, 2000, 'true', 'true', 'V');
+
+
+*************Shawn************************
+CREATE TABLE `forum` (
+  `id` int(10) NOT NULL auto_increment,
+  `tweet` varchar(140) collate utf8_unicode_ci NOT NULL default '',
+  `dt` datetime NOT NULL default '0000-00-00 00:00:00',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
