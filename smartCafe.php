@@ -1,6 +1,10 @@
 <?php
     
         session_start();
+    
+        define('INCLUDE_CHECK',1);
+        require "scripts/functions.php";
+        require "scripts/connect.php";
         
         // toggles whether personal options are displayed
         $personalOptionDisplay = false;
@@ -97,18 +101,19 @@
         
         
         // grab the menu
-        connectToDb();
+        //connectToDb();
         populateMenu();
         
         // check state
         if (isset($_SESSION['userId'])){ //userId known
-            connectToDb();
+            //connectToDb();
             getPersonalOptions();
             $personalOptionDisplay = true;
             
         }
-        elseif ( isset($_POST['username']) and isset($_POST['password']) ){
-            connectToDb();
+        elseif ( isset($_POST['username']) and isset($_POST['password']) )
+        {
+            //connectToDb();
             if (validateUser()){
                 getPersonalOptions();
                 $personalOptionDisplay = true;
