@@ -1,31 +1,8 @@
 <?php
 
-define('INCLUDE_CHECK',1);
-require "scripts/functions.php";
-require "scripts/connect.php";
 
-
-
-	
-//fetch the timeline
-$q = mysql_query("SELECT * FROM forum ORDER BY ID DESC");
-
-$timeline='';
-while($row=mysql_fetch_assoc($q))
-{
-	$timeline.=formatTweet($row['tweet'],$row['dt']);
-}
-
-
-// fetch the latest tweet
-$lastTweet = '';
-list($lastTweet) = mysql_fetch_array(mysql_query("SELECT tweet FROM forum ORDER BY id DESC LIMIT 1"));
-
-if(!$lastTweet) $lastTweet = "You don't have any tweets yet!";
 
 ?>
-
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -35,11 +12,32 @@ if(!$lastTweet) $lastTweet = "You don't have any tweets yet!";
 		<style type="text/css" media="all">
 			@import "css/style.css";
 		</style>
+		
 
+		 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
 
-		<link rel="stylesheet" type="text/css" href="css/forum.css" />
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-		<script type="text/javascript" src="scripts/forum.js"></script>
+        var options = {
+          title: 'My Daily Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+		
+	
 
 	</head>
 	<body>
@@ -75,29 +73,15 @@ if(!$lastTweet) $lastTweet = "You don't have any tweets yet!";
 
 				<div id="middle-container">
 					<div id="middle">
-					<div id="twitter-container">
-					<form id="tweetForm" action="scripts/submit.php" method="post">
-						<span class="counter">200</span>
-						<label for="inputField">Please input your reviews.</label>
-
-						<textarea name="inputField" id="inputField" tabindex="1"rows="2" cols="40"></textarea>
-						<input class="submitButton inact" name="submit" type="submit" value="update" />
-
-						<span class="latest"><strong>Latest: </strong><span id="lastTweet"><?=$lastTweet?></span></span>
-
-						<div class="clear"></div>
-					</form>
-
-					<h3 class="timeline">Reviews</h3>
-
-					<ul class="statuses"><?php echo $timeline ?></ul>
+					 <div id="chart_div" style="width: 900px; height: 500px;"></div>
+						
 
 
 					</div>
-					</div>
-
-
 				</div>
+
+
+			</div>
 
 				<div id="bot">
 					COEN 276 2012 Fall.  Group P.&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">About Us</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Contact Us</a>&nbsp;&nbsp;&nbsp;
@@ -108,3 +92,4 @@ if(!$lastTweet) $lastTweet = "You don't have any tweets yet!";
 
 	</body>
 </html>
+
