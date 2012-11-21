@@ -76,3 +76,4 @@ CREATE TABLE `forum` (
   `dt` datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
