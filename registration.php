@@ -18,7 +18,7 @@
 			function showValue(){
 				str=document.getElementsByName("campusIDB")[0].value;
 				if(str==""){
-					document.getElementsByName("Budget").value="";
+					document.getElementsByName("budget").value="";
 					return;
 				}
 
@@ -32,27 +32,22 @@
 					if(xmlhttp.readyState==4 && xmlhttp.status==200)
 					{
 						text=xmlhttp.responseText;
+
 						
-						if(text.length<=2){
+						if(text.charAt(0)=='N'){
+							document.getElementsByName("budget")[0].value="";
 							alert("This user does not exist!");
 						}else{
-							document.getElementsByName("Budget")[0].value=xmlhttp.responseText;	
+							document.getElementsByName("budget")[0].value=text;	
 						}
 						
 					}
 				}
 
-				
-
-				
-
 				xmlhttp.open("GET","scripts/regist.php?id="+str+"&type=budget",true);
 				xmlhttp.send();
 
-				
-
-
-			}
+				}
 
 			function showCaloric(){
 				str=document.getElementsByName("campusIDN")[0].value;
@@ -72,28 +67,35 @@
 					{
 						text=xmlhttp.responseText;
 						
-						if(text.length<=2){
+						if(text.charAt(0)=='N'){
+							document.getElementsByName("caloric")[0].value="";
 							alert("This user does not exist!");
+						
 						}else{
 							document.getElementsByName("caloric")[0].value=xmlhttp.responseText;
 						}
 					}
 				}
 
-				
-
-				
-
-				xmlhttp.open("GET","scripts/regist.php?id="+str+"&type=calorie",true);
+				xmlhttp.open("GET","scripts/regist.php?id="+str+"&type=caloric",true);
 				xmlhttp.send();
+
+			}
+
+			function updateValue(id,name,value){
+
+				xmlhttp=new XMLHttpRequest();
+				xmlhttp.open("GET","scripts/regist.php?id="+id+"&type="+name+"&behavior=update"+"&value="+value,true);
+				xmlhttp.send();
+
+
+			}
 
 
 			
 
 
 
-
-			}
 		</script>
 	</head>
 	<body>
@@ -143,9 +145,9 @@
 							<fieldset>
 								<legend>Budget Trackings</legend>
 									CampusID: 		<input type="text" name="campusIDB"><br>
-									MonthlyBudget:  <input type="text" name="Budget" value="100"><br>
+									MonthlyBudget:  <input type="text" name="budget" ><br>
 									<button type="button" onclick="showValue()">Load</button>
-									<button type="button" onclick="test()">Save</button>
+									<button type="button" onclick="updateValue(document.getElementsByName('campusIDB')[0].value,'budget',document.getElementsByName('budget')[0].value)">Save</button>
 								
 							</fieldset>
 							
@@ -154,7 +156,7 @@
 									CampusID: <input type="text" name="campusIDN"><br>
 									Total Daily Calories: <input type="text" name="caloric"><br>
 									<button type="button" onclick="showCaloric()">Load</button>
-									<button type="button">Save</button>
+									<button type="button" onclick="updateValue(document.getElementsByName('campusIDN')[0].value,'caloric',document.getElementsByName('caloric')[0].value)">Save</button>
 								
 									
 								
