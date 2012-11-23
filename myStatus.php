@@ -1,5 +1,7 @@
 <?php
 
+define('INCLUDE_CHECK',1);
+require "scripts/connect.php";
 
 
 ?>
@@ -14,8 +16,56 @@
 		</style>
 		
 
-		 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    	<script type="text/javascript">
+
+    	function showValue(){
+				id=document.getElementsByName("campusID")[0].value;
+				if(window.XMLHttpRequest){
+					xmlhttp=new XMLHttpRequest();
+				}else{
+					xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				}
+
+				xmlhttp.onreadystatechange=function(){
+					if(xmlhttp.readyState==4 && xmlhttp.status==200)
+					{
+						text=xmlhttp.responseText;
+
+						
+						if(text.charAt(0)=='N'){
+							document.getElementsByName("budget")[0].value="";
+							alert("This user does not exist!");
+						}else{
+							document.getElementsByName("budget")[0].value=text;	
+						}
+						
+					}
+				}
+
+				xmlhttp.open("GET","scripts/getChartData.php?id="+id,true);
+				xmlhttp.send();
+
+				}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
@@ -73,7 +123,29 @@
 
 				<div id="middle-container">
 					<div id="middle">
+						
+							
+						<form  >
+							<fieldset>
+								<legend>Input your Campus ID here:</legend>
+									CampusID: 		<input type="text" name="campusID">
+									
+									<button type="button" onclick="showValue()">Load</button>
+																	
+							</fieldset>
+							
+						</form>		
+							
+						
+					
+						
+					<div class="chartText">Daily Caloric Distribution	</div>
+					
+						
+					
 					 <div id="chart_div" style="width: 900px; height: 500px;"></div>
+					<div class="chartText">Daily Cost Distribution</div>
+						<div id="cost_div"style="width: 900px; height: 500px;"></div>
 						
 
 

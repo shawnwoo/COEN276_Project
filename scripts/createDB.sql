@@ -79,11 +79,11 @@ CREATE TABLE `forum` (
 
 create table `orders`(
 	userId int,
-	item_name1 varchar(20),
-	item_name2 varchar(20),
-	item_name3 varchar(20),
-	item_name4 varchar(20),
-	item_name5 varchar(20)
+	item1 varchar(20),
+	item2 varchar(20),
+	item3 varchar(20),
+	item4 varchar(20),
+	item5 varchar(20)
 
 );
 
