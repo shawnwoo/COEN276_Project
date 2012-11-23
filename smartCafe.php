@@ -3,13 +3,9 @@
         session_start();
     
         define('INCLUDE_CHECK',1);
-       
         require "scripts/connect.php";
-        
-        // toggles whether personal options are displayed
-        $personalOptionDisplay = false;
-        
-        
+
+                
         // database varibles
         $menuArray = array();
         $con;
@@ -36,96 +32,42 @@
         
         function getItemInfo($num){
             global $menuArray;
-            echo "<div class='item'>";
+            echo "<div class='item'>\n";
             echo "<div class = 'itemHeader'><span class='itemName'>".$menuArray[$num]['item_name']."</span>";
             echo "<span class = 'type'>" . $menuArray[$num]['type']. "</span>";
-            echo "<span class = 'price'>".$menuArray[$num]['price']."</span></div>";
-            echo "<img class='foodImg' src=" . $menuArray[$num]['imgSrc']. " alt='sushi'/>";
-            echo "<div class='itemFooter'>";
-            echo "<span class='descrip'> D </span>";
-            echo "<span class = 'hiddenDescrip'>".$menuArray[$num]['description']."</span>";
-            echo "<span class='cal'>".$menuArray[$num]['calories']."</span>";
-            echo "<span class='order'>";
-            echo "<label for='orderQty'>Order</label>";
-            echo "<select name='Order Qty' id = '".$menuArray[$num]['item_name']."'/>";
-            echo "<option value='0'>0</option>";
-            echo "<option value='1'>1</option>";
-            echo "<option value='2'>2</option>";
+            echo "<span class = 'price'>".$menuArray[$num]['price']."</span></div>\n";
+            echo "<img class='foodImg' src=" . $menuArray[$num]['imgSrc']. " alt='sushi'/>\n";
+            echo "<div class='itemFooter'>\n";
+            echo "<span class='descrip'> D </span>\n";
+            echo "<span class = 'hiddenDescrip'>".$menuArray[$num]['description']."</span>\n";
+            echo "<span class='cal'>".$menuArray[$num]['calories']."</span>\n";
+            echo "<span class='order'>\n";
+            echo "<label for='orderQty'>Order</label>\n";
+            echo "<select name='Order Qty' id = '".$menuArray[$num]['item_name']."'/>\n";
+            echo "<option value='0'>0</option>\n";
+            echo "<option value='1'>1</option>\n";
+            echo "<option value='2'>2</option>\n";
             echo"</select>";
             echo "</span>";
             echo "</div>";
-            echo "</div>";
+            echo "</div>\n\n\n";
         }
         
         
-        // function connectToDb(){
-            
-        //     global $con;
-        //     $con = mysql_connect("localhost:8888", "root", "root");
-        //     if(!$con)
-        //     {
-        //         die('Could not connect');
-                
-        //     }
-        //     mysql_select_db("csf", $con);
-        // }
-        
-        
-        function validateUser(){
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-            $result = mysql_query("select * from users where userId = ".$username ." and password=".$password);
-            global $row;
-            if ( $row = mysql_fetch_array($result) ){
-                $_SESSION['userId'] = $row['userId'];
-                return true;
-            }
-            else
-            {
-                echo "incorrect login";
-                return false;
-            }
-        }
-        
-        
-        function getPersonalOptions(){
-            
-            $result = mysql_query("select * from users where userId = ".$_SESSION['userId']);
-            if ($row = mysql_fetch_array($result))
-            {
-                global $caloricLimit, $budget;
-                $caloricLimit = $row['caloricLimit'];
-                $budget = $row['budget'];
-            }
-        }
         
         
         // grab the menu
-        //connectToDb();
         populateMenu();
-        
-        // check state
+    
+    
+    
+        /* check state
         if (isset($_SESSION['userId'])){ //userId known
-            //connectToDb();
+            
             getPersonalOptions();
-            $personalOptionDisplay = true;
             
-        }
-        elseif ( isset($_POST['username']) and isset($_POST['password']) )
-        {
-            //connectToDb();
-            if (validateUser()){
-                getPersonalOptions();
-                $personalOptionDisplay = true;
-            }
-        }
-        else{
             
-            // user not logged in and not trying to log in 
-        }
-        
-        //mysql_close($con);
-        
+        }*/
     
     
 ?>
@@ -177,11 +119,14 @@
 										</li>
 
 <li>
-<form action = "smartCafe.php" method = "post">
-<p><input type = "text" name = "username" value = "id"/>
-<input tyoe = "text" name = "password" value = "password"/>
-<input type = "submit" value = "login"/></p>
-</form>
+
+<p>
+    <input type = "text" name = "username" id = "username" value = ""/>
+    <input type = "text" name = "password" id = "password" value = ""/>
+    <input type = "button" name = "login" id = "login" value = "login"/>
+    <br/><p id = "invalidLoginMsg"></p>
+</p>
+
 </li>
 
 									</ul>
@@ -241,53 +186,32 @@
 					</div>
 
 
-
-					<div id = "personal"  class= "cafeHorizontal">
-						<div class="horizontalRight">
-							<table class="cafeTable">
-								<caption> Nutritional Tracking</caption>
-								<tr><td>Daily Calories Allowed</td><td></td></tr>
-								<tr><td>Total Calories Consumed Today</td><td></td></tr>
-								<tr><td>Total Calories This Order</td><td></td></tr>
-								<tr><td>Preferred Meal Type</td><td></td></tr>								
-							</table>						
-						</div>				
-						<div class="horizontalLeft">
-							<table class="cafeTable">
-								<caption>Budget Tracking</caption>
-								<tr><td>Monthly Budget</td><td></td></tr>
-								<tr><td>Balance Available</td><td></td></tr>
-								<tr><td>Total this Order</td><td></td></tr>
-								<tr><td>Some Other Field</td><td></td></tr>
-							</table>							
-						</div>				
-	
-					</div>							
+                    <div id="personal" class= "cafeHorizonatal"></div>
 					<div class= "cafeHorizontal">
 						<div class = "horizontalRight">
 							<table id="orderDetails" class="cafeTable">
-								<caption>Your Order Details</caption>
-								<tr>
-									<td>Subtotal</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>Discount (10% if registered)</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>Tax (8.25%)</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>Delivery</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>Total</td>
-									<td></td>
-								</tr>
-							</table>
+                                <caption>Your Order Details</caption>
+                                <tr>
+                                    <td>Subtotal</td>
+                                    <td id = "subtotal"></td>
+                                </tr>
+                                <tr>
+                                    <td>Discount (10% if registered)</td>
+                                    <td id = "discount"></td>
+                                </tr>
+                                <tr>
+                                    <td>Tax (8.25%)</td>
+                                    <td id = "tax"></td>
+                                </tr>
+                                <tr>
+                                    <td>Delivery</td>
+                                    <td id = "delivery"></td>
+                                </tr>
+                                <tr>
+                                    <td>Total</td>
+                                    <td id = "total"></td>
+                                </tr>
+                                </table>
 						</div>
 
 						<div class="horizontalLeft">
@@ -296,9 +220,8 @@
 								<tr>
 									<td>
 										<form>
-											<input type="radio" name="deliveryopt" value="Pickup">Pickup<br>
-											<br> <input type="radio" name="deliveryopt"
-											value="Delivery">Deliver (add $1.00)
+											<input type="radio" name="deliveryopt" value="0.00"/>Pickup<br><br>
+											<input type="radio" name="deliveryopt" value="1.00"/>Deliver (add $1.00)
 										</form>
 									</td>
 									<td>Name<br />
