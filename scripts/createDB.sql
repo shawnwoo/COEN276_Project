@@ -77,3 +77,16 @@ CREATE TABLE `forum` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+create table `orders`(
+	userId int,
+	item_name1 varchar(20),
+	item_name2 varchar(20),
+	item_name3 varchar(20),
+	item_name4 varchar(20),
+	item_name5 varchar(20)
+
+);
+
+insert into orders values(12345,'Asian Bowl','Pizza Margheritta','Roated Vegetables','Hot Chili Bowl','Sunny Sub');
+
+
