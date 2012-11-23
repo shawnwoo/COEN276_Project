@@ -3,7 +3,7 @@
         session_start();
     
         define('INCLUDE_CHECK',1);
-        require "scripts/functions.php";
+       
         require "scripts/connect.php";
         
         // toggles whether personal options are displayed
@@ -58,17 +58,17 @@
         }
         
         
-        function connectToDb(){
+        // function connectToDb(){
             
-            global $con;
-            $con = mysql_connect("localhost:8888", "root", "root");
-            if(!$con)
-            {
-                die('Could not connect');
+        //     global $con;
+        //     $con = mysql_connect("localhost:8888", "root", "root");
+        //     if(!$con)
+        //     {
+        //         die('Could not connect');
                 
-            }
-            mysql_select_db("csf", $con);
-        }
+        //     }
+        //     mysql_select_db("csf", $con);
+        // }
         
         
         function validateUser(){
@@ -124,7 +124,7 @@
             // user not logged in and not trying to log in 
         }
         
-        mysql_close($con);
+        //mysql_close($con);
         
     
     
@@ -177,7 +177,7 @@
 										</li>
 
 <li>
-<form action = "http://localhost:8888/smartCafe.php" method = "post">
+<form action = "smartCafe.php" method = "post">
 <p><input type = "text" name = "username" value = "id"/>
 <input tyoe = "text" name = "password" value = "password"/>
 <input type = "submit" value = "login"/></p>
