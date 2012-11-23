@@ -179,10 +179,10 @@
 
 					<div class= "cafeHorizontal">
 						<p> Drinks</p>
-                        <?php getItemInfo(0); ?>
-                        <?php getItemInfo(1); ?>
-                        <?php getItemInfo(2); ?>
-                        <?php getItemInfo(3); ?>
+                        <?php getItemInfo(12); ?>
+                        <?php getItemInfo(13); ?>
+                        <?php getItemInfo(14); ?>
+                        <?php getItemInfo(15); ?>
 					</div>
 
 

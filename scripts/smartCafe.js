@@ -55,7 +55,7 @@ function update_qty(){
     
     var selectedQty = this.value;
     var itemName = this.id; 
-    var price = $(this).closest(".item").children(".itemHeader").children(".price").text(); alert
+    var price = $(this).closest(".item").children(".itemHeader").children(".price").text();
     var linePrice = price * selectedQty;
     cart[itemName]=[selectedQty, price, selectedQty*price];
     subtotal = get_subtotal(cart);
@@ -63,23 +63,24 @@ function update_qty(){
     
     // value has changed, search if there if there is an exising item
     searchExistingString = itemName + "Picked";  // id of a a tablerow
-    alert(searchExistingString)
     
     var foundItem = document.getElementById(searchExistingString);
     if( $(foundItem).length ){
         
         if (selectedQty > 0){
             $(foundItem).children(":last").text(linePrice);
-            alert("here")}
+            $(foundItem).children(":first").text(itemName + " " + selectedQty + " at $" + price);
+            }
         else
             $(foundItem).remove();
         
     }
     else{
-        alert("here 2")
-        var stringToAppend = "<tr id=" + itemName + "Picked> <td>" + itemName + " " + selectedQty + " at $" + price + "</td><td>" + linePrice  + "</td></tr>";
-        $("#orderDetails").prepend(stringToAppend);
+        
+        var stringToAppend = "<tr id='" + itemName + "Picked'> <td>" + itemName + " " + selectedQty + " at $" + price + "</td><td>" + linePrice  + "</td></tr>";
+        $("#orderDetails").prepend(stringToAppend);        
     }
+    
     $("#subtotal").text(subtotal);
     $("#discount").text(discount);
     $("#tax").text(tax);
