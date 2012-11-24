@@ -74,7 +74,7 @@ create table orders(
     order_num int,
     date datetime NOT NULL default '0000-00-00 00:00:00',
     userId int,
-    item_name varchar(20),
+    item_name varchar(40),
     qty int
 );
 
