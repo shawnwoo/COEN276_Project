@@ -58,7 +58,7 @@ create table users(
 insert into users values(12345, 500, 2500.00, 2000, 1, 1, 'V', 2500.00);
 
 
-
+drop table if exists forum;
 CREATE TABLE `forum` (
   `id` int(10) NOT NULL auto_increment,
   `tweet` varchar(140) collate utf8_unicode_ci NOT NULL default '',
