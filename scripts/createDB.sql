@@ -69,6 +69,12 @@ CREATE TABLE `forum` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
+
+drop table if exists orderNumbers;
+create table orderNumbers(
+    order_num  int not null auto_increment unique
+);
+
 drop table if exists orders;
 create table orders(
     order_num int,
