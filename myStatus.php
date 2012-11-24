@@ -15,38 +15,63 @@ require "scripts/connect.php";
 			@import "css/style.css";
 		</style>
 		
-
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
     	<script type="text/javascript">
 
-    	function showValue(){
-				id=document.getElementsByName("campusID")[0].value;
-				if(window.XMLHttpRequest){
-					xmlhttp=new XMLHttpRequest();
-				}else{
-					xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-				}
+    	$(document).ready(function(){
 
-				xmlhttp.onreadystatechange=function(){
-					if(xmlhttp.readyState==4 && xmlhttp.status==200)
-					{
-						text=xmlhttp.responseText;
 
+    		$('#loadbutton').click(function(){
+    			
+    			
+    			$.ajax({
+    				type:'GET',
+    				url:'scripts/getChartData.php',
+    				data:'id='+$('#campusID').val(),
+    				dataType:'json',
+    				cache:false,
+
+    				success:function(result){
+
+    					//$('#test').html('id='+$('#campusID').val());
+
+    					
+    					$('#test').html(result[0]);
+    				}
+
+
+    			})
+    		})
+    	})
+
+
+    // 	function showValue(){
+
+    // 			id=$
+
+				// id=document.getElementsByName("campusID")[0].value;
+				// if(window.XMLHttpRequest){
+				// 	xmlhttp=new XMLHttpRequest();
+				// }else{
+				// 	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				// }
+
+				// xmlhttp.onreadystatechange=function(){
+				// 	if(xmlhttp.readyState==4 && xmlhttp.status==200)
+				// 	{
+				// 		text=xmlhttp.responseText;
+
+				// 		document.getElementById("test").innerHTML=text;	
 						
-						if(text.charAt(0)=='N'){
-							document.getElementsByName("budget")[0].value="";
-							alert("This user does not exist!");
-						}else{
-							document.getElementsByName("budget")[0].value=text;	
-						}
 						
-					}
-				}
+				// 	}
+				// }
 
-				xmlhttp.open("GET","scripts/getChartData.php?id="+id,true);
-				xmlhttp.send();
+				// xmlhttp.open("GET","scripts/getChartData.php?id="+id,true);
+				// xmlhttp.send();
 
-				}
+				// }
 
 
 
@@ -123,14 +148,14 @@ require "scripts/connect.php";
 
 				<div id="middle-container">
 					<div id="middle">
-						
+						<div id="test"></div>
 							
 						<form  >
 							<fieldset>
 								<legend>Input your Campus ID here:</legend>
-									CampusID: 		<input type="text" name="campusID">
+									CampusID: 		<input type="text" name="campusID" id="campusID">
 									
-									<button type="button" onclick="showValue()">Load</button>
+									<button type="button" id="loadbutton">Load</button>
 																	
 							</fieldset>
 							

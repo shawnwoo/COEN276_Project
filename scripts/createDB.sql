@@ -1,7 +1,7 @@
 use csf;
 drop table if exists menu;
 create table menu (
-	item_name varchar(20), 
+	item_name varchar(40), 
 	description varchar(1000),
 	calories int,
 	type varchar(10),
@@ -56,9 +56,11 @@ create table users(
 );
 
 insert into users values(12345, 500, 2500.00, 2000, 1, 1, 'V', 2500.00);
+insert into users values(23456, 500, 1500.00, 2500, 0, 0, 'V', 2500.00);
+insert into users values(123, 500, 1000.00, 1666, 1, 0, 'V', 2500.00);
+insert into users values(999, 500, 2500.00, 1000, 0, 1, 'V', 2500.00);
 
-
-
+drop table if exists forum;
 CREATE TABLE `forum` (
   `id` int(10) NOT NULL auto_increment,
   `tweet` varchar(140) collate utf8_unicode_ci NOT NULL default '',
@@ -70,8 +72,15 @@ CREATE TABLE `forum` (
 drop table if exists orders;
 create table orders(
     order_num int,
-    date datetime,
+    date datetime NOT NULL default '0000-00-00 00:00:00',
     userId int,
-    item_name varchar(20),
+    item_name varchar(40),
     qty int
 );
+
+insert into orders values(1,'2012-11-23 12:00:00',12345,'Asian Bowl',1);
+insert into orders values(1,'2012-11-23 12:00:00',12345,'Pizza Margheritta',1);
+insert into orders values(1,'2012-11-23 12:00:00',12345,'Roated Vegetables',1);
+insert into orders values(1,'2012-11-23 12:00:00',12345,'Buddy Dog',1);
+insert into orders values(1,'2012-11-23 12:00:00',12345,'Lemon Cake',1);
+insert into orders values(1,'2012-11-23 12:00:00',12345,'Orange Juice',2);
