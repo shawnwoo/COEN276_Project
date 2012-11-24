@@ -11,10 +11,28 @@ var total = 0.00;
 
 $(document).ready(function(){
                   
+                  // need to get iterms out of the cart into an array
+                  
                   $("#login").click(validateUser);
                   $("select").change(update_qty);
                   $("input:radio").change(set_delivery);
+                  $("#order").click(place_order);
                   })
+
+
+function place_order(){
+    
+    var dataToPass = {};
+    for(var obj in cart)
+    {
+        var propName = obj;
+        dataToPass[propName] =  cart[propName][0];
+    }
+
+    $.post("scripts/placeorder.php", dataToPass, function(){alert("Thank you for your order")} );
+    
+
+}
 
 
 function set_delivery(){
@@ -99,13 +117,6 @@ function validateUser()
     var username = $("#username").val();
     var password = $("#password").val();
     
-    
-    
-    /*if (username.length==0)
-    {
-        $("#txtHint").text("Wrong username  and or password", alert("hi"));
-        return;
-    } */
     
     if (window.XMLHttpRequest)
     {// code for IE7+, Firefox, Chrome, Opera, Safari

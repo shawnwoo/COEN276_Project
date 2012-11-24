@@ -239,9 +239,9 @@
 						</div>
 					</div>	
 					<div id="reviewOrder"  class= "cafeHorizontal">
-						<form id="continueOrder" action="">
-							<p id="sp"><input id="btn" type="button" value="Review Order"></p>
-						</form>
+                    
+							<p id="sp"><input id="order" type="button" value="Place Order"></p>
+                
 					</div>
 
 				</div>
