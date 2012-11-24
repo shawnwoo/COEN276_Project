@@ -13,7 +13,9 @@
         // personal variables
         $caloricLimit;
         $budget;
-        
+
+    
+    
         
         function populateMenu(){
 
