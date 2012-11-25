@@ -90,3 +90,4 @@ insert into orders values(1,'2012-11-23 12:00:00',12345,'Roated Vegetables',1);
 insert into orders values(1,'2012-11-23 12:00:00',12345,'Buddy Dog',1);
 insert into orders values(1,'2012-11-23 12:00:00',12345,'Lemon Cake',1);
 insert into orders values(1,'2012-11-23 12:00:00',12345,'Orange Juice',2);
+insert into orders values(1,'2012-11-25 12:00:00',12345,'Lemon Cake',1);

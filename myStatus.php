@@ -15,101 +15,179 @@ require "scripts/connect.php";
 			@import "css/style.css";
 		</style>
 		
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
     	<script type="text/javascript">
+    	
 
-    	$(document).ready(function(){
+		google.load("visualization", "1", {packages:["corechart"]});
+		google.load('visualization', '1', {packages:['table']});
+
+    	function handleButtonClick(){
+    		
+    		drawVisualization();
+    	}
 
 
-    		$('#loadbutton').click(function(){
-    			
-    			
-    			$.ajax({
-    				type:'GET',
-    				url:'scripts/getChartData.php',
-    				data:'id='+$('#campusID').val(),
+
+    	function getData(){
+
+    	}
+
+    	function drawVisualization(){
+    		var chart_container=document.getElementById('chart_div');
+			var table_container=document.getElementById('table_div');
+			var response=$.ajax({
+    	 			type:'GET',
+    	 			url:'scripts/getChartData.php',
+    					data:'id='+$('#campusID').val(),
     				dataType:'json',
-    				cache:false,
+    				async:false,
 
     				success:function(result){
-
-    					//$('#test').html('id='+$('#campusID').val());
-
     					
-    					$('#test').html(result[0]);
+    					return result;
     				}
 
-
-    			})
-    		})
-    	})
+    					
+    				}).responseText;
 
 
-    // 	function showValue(){
+			var source=jQuery.parseJSON(response);
 
-    // 			id=$
+			
 
-				// id=document.getElementsByName("campusID")[0].value;
-				// if(window.XMLHttpRequest){
-				// 	xmlhttp=new XMLHttpRequest();
-				// }else{
-				// 	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-				// }
+			var data = new google.visualization.DataTable(response,0.6);
+			var dataview=new google.visualization.DataView(data);
+			
 
-				// xmlhttp.onreadystatechange=function(){
-				// 	if(xmlhttp.readyState==4 && xmlhttp.status==200)
-				// 	{
-				// 		text=xmlhttp.responseText;
-
-				// 		document.getElementById("test").innerHTML=text;	
-						
-						
-				// 	}
-				// }
-
-				// xmlhttp.open("GET","scripts/getChartData.php?id="+id,true);
-				// xmlhttp.send();
-
-				// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
-
-        var options = {
-          title: 'My Daily Activities'
+    		var options = {
+          title: 'My Caloric Distribution'
         };
+         var chart = new google.visualization.ColumnChart(chart_container);
+         chart.draw(dataview,options);
+        var table=new google.visualization.Table(table_container);
+        table.draw(data,null);
 
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
+
+
+
+    	}
+
+
+
+    	// google.load("visualization", "1", {packages:["corechart"]});
+
+    	// $('#loadbutton').click(function(){
+    	// 	$('#test').html("test");
+
+
+    	// 	google.setOnLoadCallback(drawChart);
+
+    	// function drawChart(){
+    	// 	// var jsonData=$.ajax({
+
+    	// 	// 	type:'GET',
+    	// 	// 	url:'scripts/getChartData.php',
+    	// 	// //	data:'id='+$('#campusID').val(),
+    	// 	// 	dataType:'json',
+    	// 	// 	async:false
+
+    	// 	// }).responseText;//ajax
+
+    	// 	// var data=new google.visualization.DataTable(jsonData);
+
+    	// 	  var data = google.visualization.arrayToDataTable([
+     //      ['Task', 'Hours per Day'],
+     //      ['Work',     55],
+     //      ['Eat',      2],
+     //      ['Commute',  2],
+     //      ['Watch TV', 2],
+     //      ['Sleep',    7]
+     //    ]);
+    	// 	var options = {
+     //      title: 'My Daily Activities'
+     //    };
+
+     //    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+     //    chart.draw(data, options);
+    	// }
+
+    	// })//loadbutton click
+
+   
+    	
+
+
+
+
+    	// $(document).ready(function(){
+
+    	// 	$('#loadbutton').click(function(){   			
+    			
+    	// 		$.ajax({
+    	// 			type:'GET',
+    	// 			url:'scripts/getChartData.php',
+    	// 			data:'id='+$('#campusID').val(),
+    	// 			dataType:'json',
+    	// 			cache:false,
+
+    	// 			success:function(result){
+
+    	// 				//$('#test').html('id='+$('#campusID').val()); 
+
+    					
+    	// 				google.setOnLoadCallback(drawChart);
+    	// 			}
+
+
+    	// 		})
+    	// 	})
+    	// })
+
+	// google.setOnLoadCallback(drawChart);
+ //      function drawChart() {
+ //        var data = google.visualization.arrayToDataTable([
+ //          ['Task', 'Hours per Day'],
+ //          ['Work',     55],
+ //          ['Eat',      2],
+ //          ['Commute',  2],
+ //          ['Watch TV', 2],
+ //          ['Sleep',    7]
+ //        ]);
+
+ //        var options = {
+ //          title: 'My Daily Activities'
+ //        };
+
+ //        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+ //        chart.draw(data, options);
+ //      }
+
+	
+
+
+
+
+      // google.load("visualization", "1", {packages:["corechart"]});
+      // google.setOnLoadCallback(drawChart);
+      // function drawChart() {
+      //   var data = google.visualization.arrayToDataTable([
+      //     ['Task', 'Hours per Day'],
+      //     ['Work',     11],
+      //     ['Eat',      2],
+      //     ['Commute',  2],
+      //     ['Watch TV', 2],
+      //     ['Sleep',    7]
+      //   ]);
+
+      //   var options = {
+      //     title: 'My Daily Activities'
+      //   };
+
+      //   var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+      //   chart.draw(data, options);
+      //}
     </script>
 		
 	
@@ -155,7 +233,7 @@ require "scripts/connect.php";
 								<legend>Input your Campus ID here:</legend>
 									CampusID: 		<input type="text" name="campusID" id="campusID">
 									
-									<button type="button" id="loadbutton">Load</button>
+									<button type="button" id="loadbutton" onclick="handleButtonClick()">Load</button>
 																	
 							</fieldset>
 							
@@ -169,8 +247,8 @@ require "scripts/connect.php";
 						
 					
 					 <div id="chart_div" style="width: 900px; height: 500px;"></div>
-					<div class="chartText">Daily Cost Distribution</div>
-						<div id="cost_div"style="width: 900px; height: 500px;"></div>
+					<div class="chartText">Table of Caloric Distribution</div>
+						<div id="table_div"style="width: 900px; height: 500px;"></div>
 						
 
 
