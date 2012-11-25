@@ -12,7 +12,35 @@
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
 		<script type='text/javascript' src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script type='text/javascript' src="http://code.jquery.com/ui/jquery-ui-git.js"></script>
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 		<script type="text/javascript">
+
+			var myCenter1=new google.maps.LatLng(37.34894,-121.937428);
+			var myCenter2=new google.maps.LatLng(37.348676,-121.934863);
+			var marker;
+
+			function initialize()
+			{
+				var mapProp = {
+  				center:myCenter1,
+  				zoom:16,
+  				mapTypeId:google.maps.MapTypeId.ROADMAP
+  			};
+
+			var map=new google.maps.Map(document.getElementById("map"),mapProp);
+
+			marker=new google.maps.Marker({
+  			position:myCenter1,
+  			animation:google.maps.Animation.BOUNCE
+  			});
+
+			marker.setMap(map);
+			}
+
+			google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
 			$(document).ready(function() {
 
 				// Store variables
@@ -41,6 +69,40 @@
 					}
 
 				});
+
+				$("#one").click(
+					function(){
+						
+						
+					}
+
+					);
+
+				$("#two").click(
+					function(){
+						function update()
+			{
+				var mapProp = {
+  				center:myCenter1,
+  				zoom:16,
+  				mapTypeId:google.maps.MapTypeId.ROADMAP
+  			};
+
+			var map=new google.maps.Map(document.getElementById("map"),mapProp);
+
+			marker=new google.maps.Marker({
+  			position:myCenter2,
+  			animation:google.maps.Animation.BOUNCE
+  			});
+
+			marker.setMap(map);
+			}
+
+			google.maps.event.addDomListener(window, 'load', update);
+
+				
+					})
+
 
 			});
 
@@ -89,9 +151,12 @@
 						<table class="content" width="100%" cellpadding="0" cellspacing="0">
 							<tbody>
 								<tr>
-									<td class="left" width="66%" valign="top"><iframe width="620" height="368" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=-121.94453,37.34561,-121.93153,37.35331&amp;layer=mapnik&amp;marker=37.34950,-121.93858" style="border: 1px solid black"></iframe>
-									<br />
-									<small><a href="http://www.openstreetmap.org/?lat=37.34946&amp;lon=-121.93803&amp;zoom=17&amp;layers=M&amp;mlat=37.34950&amp;mlon=-121.93858">View Larger Map</a></small></td>
+									<td class="left" width="66%" valign="top" ">
+									<div id="map" style="width:610px;height:314px;"></div>
+
+
+
+									</td>
 									<td class="right" style="padding-left:5px;font-family: Arial, Helvetica, sans-serif;color:gray;" valign="top"><h3>Cafe on campus:</h3>
 									<ul class="accordion">
 
@@ -102,7 +167,10 @@
 											<ul class="sub-menu">
 
 												<p>
-													Feed your brain.  Smart cafe features organic and  locally grown foods that are good for your brain.  All our food comes from farms that are within 20 miles of campus.  All our eggs come from  cage-free chickens which means higher levels of choline for your diet.  Choline has been scientifically proven to boost brain power and memory retention. You can find these nutritious eggs in our Egg Supreme Sandwich as well as in all our baked goodies such as the Blueberry Power Muffin.  We also feature gluten-free options such as Salmon & Greens in the main dish section.  Vegan choices such as our signature Compassion Salad are also available.   Our menu is available for ordering online with vegan and gluten-free options clearly labeled making conscious eating easy.
+													Feed your brain.  Smart cafe features organic and  locally grown foods that are good for your brain.  All our food comes from farms that are within 20 miles of campus.  All our eggs come from  cage-free chickens which means higher levels of choline for your diet.  Choline has been scientifically proven to boost brain power and memory retention.</p> 
+													
+												<p>
+													Our menu is available for ordering online with vegan and gluten-free options clearly labeled making conscious eating easy. <a href="http://localhost:88/cafe/smartCafe.php"><img src="images/order_now.png" alt="ordernow"></a>
 												</p>
 
 											</ul>
@@ -116,7 +184,11 @@
 											<ul class="sub-menu">
 
 												<p>
-													The Rooftop Garden Cafe is one of the most unique eating experiences on campus.  All our fruits and vegetables are grown on one of the nine roofs designated to us on campus, and all our meats come from Monterey County. This makes us the most locally-grown cafe on campus.  Since our focus is on vegetables, our menu is extremely vegan friendly.  We also offer gluten-free choices.   Foods that are not subjected to long transportation and storage times are more nutritionally packed and reduces the carbon footprint by 90% compared to crops that must be shipped across the country.  Tour our rooftop gardens on Tuesdays and Thursdays from 3-4 pm.
+													The Rooftop Garden Cafe is one of the most unique eating experiences on campus.  All our fruits and vegetables are grown on one of the nine roofs designated to us on campus, and all our meats come from Monterey County. This makes us the most locally-grown cafe on campus. 
+												</p>
+												<p>	
+													   Foods that are not subjected to long transportation and storage times are more nutritionally packed and reduces the carbon footprint by 90% compared to crops that must be shipped across the country.  Tour our rooftop gardens on Tuesdays and Thursdays from 3-4 pm.
+													  
 												</p>
 
 											</ul>

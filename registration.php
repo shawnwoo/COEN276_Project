@@ -91,6 +91,71 @@
 
 			}
 
+			function updateService(id){
+
+				if(document.getElementsByName("regToN")[0].checked==false) {
+					value1=0;
+				}else {
+					value1=1;
+				};
+
+				if(document.getElementsByName("regToB")[0].checked==false) {
+					value2=0;
+				}else {
+					value2=1;
+				}
+
+
+
+				xmlhttp=new XMLHttpRequest();
+				xmlhttp.open("GET","scripts/regist.php?id="+id+"&type=service&behavior=update"+"&value="+value1+value2,true);
+				
+				xmlhttp.send();
+
+			}
+
+			function showService(){
+				var id=document.getElementsByName("campusIDS")[0].value;
+				if(window.XMLHttpRequest){
+					xmlhttp=new XMLHttpRequest();
+				}else{
+					xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				}
+
+				xmlhttp.onreadystatechange=function(){
+					if(xmlhttp.readyState==4 && xmlhttp.status==200)
+					{
+						text=xmlhttp.responseText;
+
+						
+						
+						if(text.charAt(0)=='0'){
+							
+							document.getElementsByName("regToN")[0].checked=false;
+							
+						
+						}else if(text.charAt(0)=='1'){
+							
+							document.getElementsByName("regToN")[0].checked=true;
+						};
+
+						if(text.charAt(1)=='0'){
+							document.getElementsByName("regToB")[0].checked=false;
+							
+						
+						}else if(text.charAt(1)=='1'){
+							document.getElementsByName("regToB")[0].checked=true;
+						};
+
+
+					}
+				}
+
+				xmlhttp.open("GET","scripts/regist.php?id="+id+"&type=service",true);
+				xmlhttp.send();
+
+			}
+
 
 			
 
@@ -140,15 +205,17 @@
 								<legend>Budget Trackings</legend>
 									CampusID: 		<input type="text" name="campusIDB"><br>
 									MonthlyBudget:  <input type="text" name="budget" ><br>
+									
 									<button type="button" onclick="showValue()">Load</button>
 									<button type="button" onclick="updateValue(document.getElementsByName('campusIDB')[0].value,'budget',document.getElementsByName('budget')[0].value)">Save</button>
-								
+								    
 							</fieldset>
 							
 							<fieldset>
 								<legend>Nutritional Trackings</legend>
 									CampusID: <input type="text" name="campusIDN"><br>
 									Total Daily Calories: <input type="text" name="caloric"><br>
+									
 									<button type="button" onclick="showCaloric()">Load</button>
 									<button type="button" onclick="updateValue(document.getElementsByName('campusIDN')[0].value,'caloric',document.getElementsByName('caloric')[0].value)">Save</button>
 								
@@ -157,7 +224,14 @@
 							</fieldset>
 							
 							
-							
+							<fieldset>
+								<legend>Service Registration</legend>
+								CampusID: <input type="text" name="campusIDS"><br>
+								Registed to Budget Tracking: <input type="checkbox" name="regToB" /><br />
+								Registed to Nutritional Tracking: <input type="checkbox" name="regToN" /> <br />	
+								<button type="button" onclick="showService()">Load</button>
+								<button type="button" onclick="updateService(document.getElementsByName('campusIDS')[0].value)">Save</button>
+							</fieldset>
 									
 								
 							
