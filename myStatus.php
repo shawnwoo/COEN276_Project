@@ -76,118 +76,7 @@ require "scripts/connect.php";
 
 
 
-    	// google.load("visualization", "1", {packages:["corechart"]});
-
-    	// $('#loadbutton').click(function(){
-    	// 	$('#test').html("test");
-
-
-    	// 	google.setOnLoadCallback(drawChart);
-
-    	// function drawChart(){
-    	// 	// var jsonData=$.ajax({
-
-    	// 	// 	type:'GET',
-    	// 	// 	url:'scripts/getChartData.php',
-    	// 	// //	data:'id='+$('#campusID').val(),
-    	// 	// 	dataType:'json',
-    	// 	// 	async:false
-
-    	// 	// }).responseText;//ajax
-
-    	// 	// var data=new google.visualization.DataTable(jsonData);
-
-    	// 	  var data = google.visualization.arrayToDataTable([
-     //      ['Task', 'Hours per Day'],
-     //      ['Work',     55],
-     //      ['Eat',      2],
-     //      ['Commute',  2],
-     //      ['Watch TV', 2],
-     //      ['Sleep',    7]
-     //    ]);
-    	// 	var options = {
-     //      title: 'My Daily Activities'
-     //    };
-
-     //    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-     //    chart.draw(data, options);
-    	// }
-
-    	// })//loadbutton click
-
-   
     	
-
-
-
-
-    	// $(document).ready(function(){
-
-    	// 	$('#loadbutton').click(function(){   			
-    			
-    	// 		$.ajax({
-    	// 			type:'GET',
-    	// 			url:'scripts/getChartData.php',
-    	// 			data:'id='+$('#campusID').val(),
-    	// 			dataType:'json',
-    	// 			cache:false,
-
-    	// 			success:function(result){
-
-    	// 				//$('#test').html('id='+$('#campusID').val()); 
-
-    					
-    	// 				google.setOnLoadCallback(drawChart);
-    	// 			}
-
-
-    	// 		})
-    	// 	})
-    	// })
-
-	// google.setOnLoadCallback(drawChart);
- //      function drawChart() {
- //        var data = google.visualization.arrayToDataTable([
- //          ['Task', 'Hours per Day'],
- //          ['Work',     55],
- //          ['Eat',      2],
- //          ['Commute',  2],
- //          ['Watch TV', 2],
- //          ['Sleep',    7]
- //        ]);
-
- //        var options = {
- //          title: 'My Daily Activities'
- //        };
-
- //        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
- //        chart.draw(data, options);
- //      }
-
-	
-
-
-
-
-      // google.load("visualization", "1", {packages:["corechart"]});
-      // google.setOnLoadCallback(drawChart);
-      // function drawChart() {
-      //   var data = google.visualization.arrayToDataTable([
-      //     ['Task', 'Hours per Day'],
-      //     ['Work',     11],
-      //     ['Eat',      2],
-      //     ['Commute',  2],
-      //     ['Watch TV', 2],
-      //     ['Sleep',    7]
-      //   ]);
-
-      //   var options = {
-      //     title: 'My Daily Activities'
-      //   };
-
-      //   var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-      //   chart.draw(data, options);
-      //}
     </script>
 		
 	
@@ -234,6 +123,8 @@ require "scripts/connect.php";
 									CampusID: 		<input type="text" name="campusID" id="campusID">
 									
 									<button type="button" id="loadbutton" onclick="handleButtonClick()">Load</button>
+									
+									<a href="registration.php" style="position:relative;float:right;">My Settings</a>
 																	
 							</fieldset>
 							

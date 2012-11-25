@@ -50,7 +50,19 @@
 			$query="UPDATE users SET caloricLimit='$value' WHERE userId='$id' ";
 			mysql_query($query);
 
-		}
+		};
+
+		if($type=="service"){
+			$query1="UPDATE users SET caloricTracking='$value[0]' WHERE userId='$id' ";
+			mysql_query($query1);
+			$query2="UPDATE users SET budgetTracking='$value[1]' WHERE userId='$id' ";
+			mysql_query($query2);
+
+
+		};
+
+
+
 
 
 
@@ -77,6 +89,24 @@
 			echo $calorie['caloricLimit'];
 			}
 		}
+
+		if($type=="service"){
+			$tracking=mysql_fetch_assoc(mysql_query("SELECT caloricTracking,budgetTracking from users WHERE userId= ".$id));
+
+			if($tracking['caloricTracking']==0) {
+				echo 0;
+			}else{
+				echo 1;
+			}
+
+			if($tracking['budgetTracking']==0){
+				echo 0;
+			}else{
+				echo 1;
+			}
+
+		}
+
 	}
 	
 	
