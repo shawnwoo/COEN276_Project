@@ -46,32 +46,48 @@
             $caloricTracking = $row['caloricTracking'];
         }
         
-        // do a joint query for total calories consumed for this user today
-        // to vet the vaue for $todaysCalories;
-        
+        /*$_SESSION['caloricTracking'] = $caloricTracking;
+        $_SESSION['budgetTracking'] = $budgetTracking;
+        $_SESSION['caloricLimit'] = $caloricLimit;
+        $_SESSION['budget'] = $budget;
+        */
     }
     
     
     function generate_tables(){
+        
         global $caloricLimit, $budget, $balance, $typeHighlight;
+        global $budgetTracking, $caloricTracking;
+
+
+        if ($caloricTracking){
+
         echo "<div class='horizontalRight'>";
         echo "<table class='cafeTable'>";
         echo "<caption>Nutritional Tracking</caption>";
-        echo "<tr><td>Daily Calories Allowed</td><td>$caloricLimit</td></tr>";
-        echo "<tr><td>Total Calories Ordered Today</td><td></td></tr>";
-        echo "<tr><td>Total Calories This Order</td><td></td></tr>";
+        echo "<tr><td>Daily Calories Allowed</td><td id = 'calLimit' >$caloricLimit</td></tr>";
+        //echo "<tr><td>Total Calories Ordered Today</td><td></td></tr>";
+        //echo "<tr><td>Total Calories This Order</td><td></td></tr>";
         echo "<tr><td>Preferred Meal Type</td><td>$typeHighlight</td></tr>";
+        echo "<tr id = 'caloricWarning'></tr>";
         echo "</table>";
+        
         echo "</div>";
+        }
+        
+        if ($budgetTracking){
+
         echo "<div class='horizontalLeft'>";
         echo "<table class='cafeTable'>";
         echo "<caption>Budget Tracking</caption>";
-        echo "<tr><td>Monthly Budget</td><td>$budget</td></tr>";
-        echo "<tr><td>Balance Available</td><td>$balance</td></tr>";
-        echo "<tr><td>Total this Order</td><td></td></tr>";
-        echo "<tr><td>Some Other Field</td><td></td></tr>";
+        echo "<tr><td>Monthly Budget</td><td id = 'budgetLimit'>$budget</td></tr>";
+        echo "<tr><td>Balance Available</td><td id = 'balance'>$balance</td></tr>";
+        //echo "<tr><td>Total this Order</td><td></td></tr>";
+        //echo "<tr><td>Some Other Field</td><td></td></tr>";
+        echo "<tr id = 'budgetWarning'><</tr>";
         echo "</table>";
         echo "</div>";
+        }
     }
     
     if (validateUser()){

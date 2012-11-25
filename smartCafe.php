@@ -10,12 +10,6 @@
         $menuArray = array();
         $con;
         
-        // personal variables
-        $caloricLimit;
-        $budget;
-
-    
-    
         
         function populateMenu(){
 
@@ -86,6 +80,8 @@
 			@import "css/style.css";
 			@import "css/cafe.css";
 		</style>
+
+
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script type="text/javascript" src="scripts/smartCafe.js"></script>
 
@@ -188,7 +184,10 @@
 					</div>
 
 
-                    <div id="personal" class= "cafeHorizonatal"></div>
+                    <div id="personal" class= "cafeHorizonatal">
+
+                    </div>
+
 					<div class= "cafeHorizontal">
 						<div class = "horizontalRight">
 							<table id="orderDetails" class="cafeTable">

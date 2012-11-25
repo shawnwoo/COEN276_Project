@@ -1,3 +1,5 @@
+
+
 var userLoggedIn = false;
 var cart = new Array();
 var subtotal = 0.00;
@@ -7,7 +9,14 @@ var discount = 0.00;
 var taxRate = 0.0825;
 var tax = 0.00;
 var total = 0.00;
+var totalCal = 0;
 
+// user info
+var caloricLimit=0;
+var budget=0;
+var caloricTracking=0;
+var budgetTracking=0;
+var balance=0;
 
 $(document).ready(function(){
                   
@@ -18,6 +27,8 @@ $(document).ready(function(){
                   $("input:radio").change(set_delivery);
                   $("#order").click(place_order);
                   $("#order").attr('disabled', true);
+                  
+                  
                   })
 
 
@@ -35,8 +46,8 @@ function place_order(){
            var targetTime = new Date(now.getTime() + 30*60000);
            var time = targetTime.toTimeString();
            
-           alert( "Thank you for your order!\nYour order number is: " + data + ".\nIt will be ready or delivered at " + time + ".")
-           // clear out form
+           alert( "Thank you for your order!\nYour total of this purchase is $" + total + "\nYour order number is: " + data + ".\nIt will be ready or delivered at " + time + ".")
+           // clear all forms
            location.reload(true);
            
            }
@@ -65,6 +76,14 @@ function get_subtotal(array){
 }
 
 
+function get_total_cal(array){
+    var sum = 0;
+    for(var obj in array){
+        sum += array[obj][3];
+    }
+    return sum;
+}
+
 function get_total(){
     if (userLoggedIn) {
         discountRate = 0.1
@@ -82,13 +101,18 @@ function get_total(){
 
 function update_qty(){
     
+    
+    
     var selectedQty = this.value;
     var itemName = this.id; 
     var price = $(this).closest(".item").children(".itemHeader").children(".price").text();
     var linePrice = price * selectedQty;
-    cart[itemName]=[selectedQty, price, selectedQty*price];
+    var calories = $(this).closest(".itemFooter").children(".cal").text();
+    var lineCalories = calories * selectedQty;
+    cart[itemName]=[selectedQty, price, selectedQty*price, selectedQty*calories];
     subtotal = get_subtotal(cart);
     total = get_total();
+    totalCal = get_total_cal(cart);
     
     // value has changed, search if there if there is an exising item
     searchExistingString = itemName + "Picked";  // id of a a tablerow
@@ -106,7 +130,7 @@ function update_qty(){
     }
     else{
         
-        var stringToAppend = "<tr id='" + itemName + "Picked'> <td>" + itemName + " " + selectedQty + " at $" + price + "</td><td>" + linePrice  + "</td></tr>";
+        var stringToAppend = "<tr id='" + itemName + "Picked'> <td>" + itemName + " " + selectedQty + " at $" + price  + "</td><td>" + linePrice + " (" + lineCalories + " cal)"  + "</td></tr>";
         $("#orderDetails").prepend(stringToAppend);        
     }
     
@@ -114,7 +138,7 @@ function update_qty(){
     $("#discount").text(discount);
     $("#tax").text(tax);
     $("#delivery").text(delivery);
-    $("#total").text(total);
+    $("#total").text(total + " (" + totalCal + " cal)" );
     
     
     // check if cart is empty or not to enable/disable the order button
@@ -125,6 +149,29 @@ function update_qty(){
         $("#order").attr('disabled', true);
         
     }
+    
+    
+    // check personal options
+    if( $("#calLimit").length > 0)
+    {
+        caloricTracking = 1;
+        caloricLimit = $("#calLimit").text();
+        if (totalCal > caloricLimit){
+            alert( "The calories in your cart exceeds your caloric limit of " + caloricLimit);
+        }
+    }
+    
+    
+    if( $("#budgetLimit").length > 0)
+    {
+        budgetTracking = 1;
+        budget = $("#budgetLimit").text();
+        balance = $("#balance").text();
+        if (balance < 100 ){
+            alert( "There is less than $100")
+        }
+    }
+    
     
 } // function end
 
@@ -170,6 +217,29 @@ function validateUser()
                         $("#delivery").text(delivery);
                         $("#total").text(total);}
                     
+                    
+                    // check personal options
+                    if( $("#calLimit").length > 0)
+                    {
+                        caloricTracking = 1;
+                        caloricLimit = $("#calLimit").text();
+                        if (totalCal > caloricLimit){
+                            alert( "The calories in your cart exceeds your caloric limit of " + caloricLimit);
+                        }
+                    }
+                    
+                    if( $("#budgetLimit").length > 0)
+                    {
+                        budgetTracking = 1;
+                        budget = $("#budgetLimit").text();
+                        balance = $("#balance").text();
+                        if (balance < 100 ){
+                            alert( "There is less than $100")
+                        }
+                    }
+
+
+                    
                 }
             };
             
@@ -178,7 +248,8 @@ function validateUser()
     }
     xmlhttp.open("POST","loginDisplay.php",true);
     xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    xmlhttp.send("username="+username+"&password="+password);     
+    xmlhttp.send("username="+username+"&password="+password);
+    
 }
 
 
