@@ -98,7 +98,7 @@
 					<tbody>
 						<tr>
 							<td width="116">
-								<a href="#"><img src="images/logo.png" width="116" height="70" border="0" alt="Campus Cofe Home" id="logo" class="png"></a>
+								<a href="index.html"><img src="images/logo.png" width="116" height="70" border="0" alt="Campus Cofe Home" id="logo" class="png"></a>
 							</td>
 							<td>
 								<div id="menu">
@@ -109,13 +109,13 @@
 											</a>
 										</li>
 										<li>
-											<a href="#" onmouseover="forum.src='images/forum2.png';" onmouseout="forum.src='images/forum1.png';" class="png">
+											<a href="forum.php" onmouseover="forum.src='images/forum2.png';" onmouseout="forum.src='images/forum1.png';" class="png">
 												<img src="images/forum1.png" alt="forum" name="forum" width="85" height="67" border="0" id="forum" class="png">
 											</a>
 										</li>
 										
 										<li>
-											<a href="#" onmouseover="status.src='images/status2.png';" onmouseout="status.src='images/status1.png';" class="png">
+											<a href="myStatus.php" onmouseover="status.src='images/status2.png';" onmouseout="status.src='images/status1.png';" class="png">
 												<img src="images/status1.png" alt="MyStatus" name="status" width="117" height="67" border="0" id="status" class="png">
 											</a>
 										</li>

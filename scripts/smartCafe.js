@@ -17,6 +17,7 @@ $(document).ready(function(){
                   $("select").change(update_qty);
                   $("input:radio").change(set_delivery);
                   $("#order").click(place_order);
+                  $("#order").attr('disabled', true);
                   })
 
 
@@ -29,7 +30,17 @@ function place_order(){
         dataToPass[propName] =  cart[propName][0];
     }
 
-    $.post("scripts/placeorder.php", dataToPass, function(){alert("Thank you for your order")} );
+    $.post("scripts/placeorder.php", dataToPass, function(data){
+           var now = new Date();
+           var targetTime = new Date(now.getTime() + 30*60000);
+           var time = targetTime.toTimeString();
+           
+           alert( "Thank you for your order!\nYour order number is: " + data + ".\nIt will be ready or delivered at " + time + ".")
+           // clear out form
+           location.reload(true);
+           
+           }
+           );
     
 
 }
@@ -104,6 +115,16 @@ function update_qty(){
     $("#tax").text(tax);
     $("#delivery").text(delivery);
     $("#total").text(total);
+    
+    
+    // check if cart is empty or not to enable/disable the order button
+    if (total-delivery){
+        $("#order").attr('disabled', false);
+    }
+    else {
+        $("#order").attr('disabled', true);
+        
+    }
     
 } // function end
 
