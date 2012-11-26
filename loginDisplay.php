@@ -66,8 +66,6 @@
         echo "<table class='cafeTable'>";
         echo "<caption>Nutritional Tracking</caption>";
         echo "<tr><td>Daily Calories Allowed</td><td id = 'calLimit' >$caloricLimit</td></tr>";
-        //echo "<tr><td>Total Calories Ordered Today</td><td></td></tr>";
-        //echo "<tr><td>Total Calories This Order</td><td></td></tr>";
         echo "<tr><td>Preferred Meal Type</td><td>$typeHighlight</td></tr>";
         echo "<tr id = 'caloricWarning'></tr>";
         echo "</table>";
@@ -82,9 +80,6 @@
         echo "<caption>Budget Tracking</caption>";
         echo "<tr><td>Monthly Budget</td><td id = 'budgetLimit'>$budget</td></tr>";
         echo "<tr><td>Balance Available</td><td id = 'balance'>$balance</td></tr>";
-        //echo "<tr><td>Total this Order</td><td></td></tr>";
-        //echo "<tr><td>Some Other Field</td><td></td></tr>";
-        echo "<tr id = 'budgetWarning'><</tr>";
         echo "</table>";
         echo "</div>";
         }

@@ -31,18 +31,21 @@
             echo "<div class='item'>\n";
             echo "<div class = 'itemHeader'><span class='itemName'>".$menuArray[$num]['item_name']."</span>";
             echo "<span class = 'type'>" . $menuArray[$num]['type']. "</span>";
-            echo "<span class = 'price'>".$menuArray[$num]['price']."</span></div>\n";
+            echo "<span class = 'price'>$".$menuArray[$num]['price']."</span></div>\n";
             echo "<img class='foodImg' src=" . $menuArray[$num]['imgSrc']. " alt='sushi'/>\n";
             echo "<div class='itemFooter'>\n";
-            echo "<span class='descrip'> D </span>\n";
             
-            echo "<span class='cal'>".$menuArray[$num]['calories']."</span>\n";
+            
+            echo "<span class='cal'>".$menuArray[$num]['calories']." cal</span>\n";
             echo "<span class='order'>\n";
             echo "<label for='orderQty'>Order</label>\n";
-            echo "<select name='Order Qty' id = '".$menuArray[$num]['item_name']."'/>\n";
+            echo "<select class = 'foodSelect' name='Order Qty' id = '".$menuArray[$num]['item_name']."'/>\n";
             echo "<option value='0'>0</option>\n";
             echo "<option value='1'>1</option>\n";
             echo "<option value='2'>2</option>\n";
+            echo "<option value='2'>3</option>\n";
+            echo "<option value='2'>4</option>\n";
+            echo "<option value='2'>5</option>\n";
             echo"</select>";
             echo "</span>";
             echo "</div>";
@@ -142,7 +145,7 @@
 				<div id="middle-container">
 				
 					<div id = "cafeInfo" class= "cafeHorizontal">
-						<img id="cafeImg" src="images/coffeemain.png" alt="coffee cup"/>
+						<!-- <img id="cafeImg" src="images/coffeemain.png" alt="coffee cup"/> -->
 						<h1>SmartCafe</h1>
 						<p>Open Daily: 9am-9pm<br/>Located on Building E<br/>408-555-5555</p>
 						
@@ -150,7 +153,7 @@
 					</div>						
 			
 					<div class= "cafeHorizontal">
-						<p> Main Dishes </p>
+						<p class = "foodCat"> Main Dishes </p>
                         <?php getItemInfo(0); ?>
                         <?php getItemInfo(1); ?>
                         <?php getItemInfo(2); ?>
@@ -159,7 +162,7 @@
 					</div>
 					
 					<div class= "cafeHorizontal">
-						<p> Sandwiches </p>
+						<p class = "foodCat"> Sandwiches </p>
                         <?php getItemInfo(4); ?>
                         <?php getItemInfo(5); ?>
                         <?php getItemInfo(6); ?>
@@ -168,7 +171,7 @@
 					</div>
 
 					<div class= "cafeHorizontal">
-						<p> Treats </p>
+						<p class = "foodCat"> Treats </p>
                         <?php getItemInfo(8); ?>
                         <?php getItemInfo(9); ?>
                         <?php getItemInfo(10); ?>
@@ -177,16 +180,17 @@
 					</div>
 
 					<div class= "cafeHorizontal">
-						<p> Drinks</p>
+						<p class = "foodCat"> Drinks</p>
                         <?php getItemInfo(12); ?>
                         <?php getItemInfo(13); ?>
                         <?php getItemInfo(14); ?>
                         <?php getItemInfo(15); ?>
 					</div>
 
+                    <div class="cafeHorizontal">
+                    <div id="personal">
 
-                    <div id="personal" class= "cafeHorizonatal">
-
+                    </div>
                     </div>
 
 					<div class= "cafeHorizontal">
@@ -230,8 +234,27 @@
 									<br />
 										<form action="">
 											<label for="building">Bldg</label> <select name="Bldg"><option
-												value="1">1</option></select> <label for="room">Room</label> <select
-												name="Room"><option value="1">1</option></select>
+												value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option></select> <label for="room">Room</label>
+                                            <select name="Room"><option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+                                            </select>
 										</form>
 									</td>
 								</tr>

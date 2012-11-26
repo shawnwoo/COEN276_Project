@@ -2,28 +2,28 @@
 
 var userLoggedIn = false;
 var cart = new Array();
-var subtotal = 0.00;
-var delivery = 0.00;
-var discountRate = 0.;
-var discount = 0.00;
-var taxRate = 0.0825;
-var tax = 0.00;
-var total = 0.00;
-var totalCal = 0;
+var subtotal = 0.00; 
+var delivery = 0.00; 
+var discountRate = 0.00; 
+var discount = 0.00; 
+var taxRate = 0.0825; 
+var tax = 0.00; 
+var total = 0.00; 
+var totalCal = 0; 
 
 // user info
-var caloricLimit=0;
-var budget=0;
+var caloricLimit=0; 
+var budget=0; 
 var caloricTracking=0;
 var budgetTracking=0;
-var balance=0;
+var balance=0; 
 
 $(document).ready(function(){
                   
                   // need to get iterms out of the cart into an array
                   
                   $("#login").click(validateUser);
-                  $("select").change(update_qty);
+                  $(".foodSelect").change(update_qty);
                   $("input:radio").change(set_delivery);
                   $("#order").click(place_order);
                   $("#order").attr('disabled', true);
@@ -58,7 +58,7 @@ function place_order(){
            var targetTime = new Date(now.getTime() + 30*60000);
            var time = targetTime.toTimeString();
            
-           alert( "Thank you for your order!\nYour total of this purchase is $" + total + "\nYour order number is: " + data + ".\nIt will be ready or delivered at " + time + ".")
+           alert( "Thank you for your order!\nYour total of this purchase is $" + total.toFixed(2) + "\nYour order number is: " + data + ".\nIt will be ready or delivered at " + time + ".")
            // clear all forms
            location.reload(true);
            
@@ -74,7 +74,7 @@ function set_delivery(){
     delivery = $("input:radio:checked").val();
     $("#delivery").text(delivery);
     total = get_total();
-    $("#total").text(total);
+    $("#total").text(total.toFixed(2));
     
 }
 
@@ -118,11 +118,16 @@ function update_qty(){
     var selectedQty = this.value;
     var itemName = this.id; 
     var price = $(this).closest(".item").children(".itemHeader").children(".price").text();
+    price = price.substr(1);
+    price = parseFloat(price);
+    price = price.toFixed(2);
+    
     var linePrice = price * selectedQty;
     var calories = $(this).closest(".itemFooter").children(".cal").text();
-    var lineCalories = calories * selectedQty;
+    calories = parseFloat(calories);
+    var lineCalories = calories * selectedQty; 
     cart[itemName]=[selectedQty, price, selectedQty*price, selectedQty*calories];
-    subtotal = get_subtotal(cart);
+    subtotal = get_subtotal(cart); 
     total = get_total();
     totalCal = get_total_cal(cart);
     
@@ -133,7 +138,7 @@ function update_qty(){
     if( $(foundItem).length ){
         
         if (selectedQty > 0){
-            $(foundItem).children(":last").text(linePrice);
+            $(foundItem).children(":last").text(linePrice.toFixed(2));
             $(foundItem).children(":first").text(itemName + " " + selectedQty + " at $" + price);
             }
         else
@@ -142,15 +147,15 @@ function update_qty(){
     }
     else{
         
-        var stringToAppend = "<tr id='" + itemName + "Picked'> <td>" + itemName + " " + selectedQty + " at $" + price  + "</td><td>" + linePrice + " (" + lineCalories + " cal)"  + "</td></tr>";
+        var stringToAppend = "<tr id='" + itemName + "Picked'> <td>" + itemName + " " + selectedQty + " at " + price  + "</td><td>" + linePrice.toFixed(2) + " (" + lineCalories + " cal)"  + "</td></tr>";
         $("#orderDetails").prepend(stringToAppend);        
     }
     
-    $("#subtotal").text(subtotal);
-    $("#discount").text(discount);
-    $("#tax").text(tax);
-    $("#delivery").text(delivery);
-    $("#total").text(total + " (" + totalCal + " cal)" );
+    $("#subtotal").text(subtotal.toFixed(2));
+    $("#discount").text(discount.toFixed(2));
+    $("#tax").text(tax.toFixed(2));
+    $("#delivery").text(delivery.toFixed(2));
+    $("#total").text(total.toFixed(2) + " (" + totalCal + " cal)" );
     
     
     // check if cart is empty or not to enable/disable the order button
@@ -180,7 +185,7 @@ function update_qty(){
         budget = $("#budgetLimit").text();
         balance = $("#balance").text();
         if (balance < 100 ){
-            alert( "There is less than $100")
+            alert( "There is less than $100 in your balance")
         }
     }
     
@@ -224,10 +229,10 @@ function validateUser()
                     userLoggedIn = true;
                     if(subtotal>0){
                         get_total();
-                        $("#discount").text(discount);
-                        $("#tax").text(tax);
-                        $("#delivery").text(delivery);
-                        $("#total").text(total);}
+                        $("#discount").text(discount.toFixed(2));
+                        $("#tax").text(tax.toFixed(2));
+                        $("#delivery").text(delivery.toFixed(2));
+                        $("#total").text(total.toFixed(2));}
                     
                     
                     // check personal options
