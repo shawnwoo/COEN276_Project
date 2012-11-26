@@ -44,7 +44,7 @@ if(!$lastTweet) $lastTweet = "You don't have any tweets yet!";
 		<script type="text/javascript" src="scripts/forum.js"></script>
 
 	</head>
-	<body>
+	<body style="margin-top:0px;">
 		<div id="container">
 			<div id="nav">
 
