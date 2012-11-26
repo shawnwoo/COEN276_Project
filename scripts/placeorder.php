@@ -15,15 +15,35 @@
         $orderNumber = $row['last_insert_id()'];
     }
     
+    
     foreach($_POST as $key => $value)
     {
-
-        $sql = "insert into orders (order_num, date, userId, item_name, qty) values (last_insert_id(), now(), $userId, '$key', $value)";
-        mysql_query($sql);
-
+        $key = str_replace("_", " ", $key);  // post adds underscores
         
+        if ( strcmp($key, "grandTotal") )
+        {
+            $sql = "insert into orders (order_num, date, userId, item_name, qty) values (last_insert_id(), now(), $userId, '$key', $value)";
+            mysql_query($sql);
+        }
+        else // it is grandTotal
+        {
+            $sql_2 = "select balance from users where userId = $userId";
+            $result_2 = mysql_query($sql_2);
+            if ($row_2 = mysql_fetch_array($result_2))
+            {
+                $balance = $row_2['balance'];
+                $currentBalance = $balance - $value;
+            
+            }
+        }
     }
     
+    // update balance
+    $sql_3 = "update users set balance = $currentBalance where userId = $userId";
+    mysql_query($sql_3);
+    
+    // return order number
     echo $orderNumber;
+    
 
 ?>

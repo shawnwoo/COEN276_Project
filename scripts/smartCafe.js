@@ -27,8 +27,6 @@ $(document).ready(function(){
                   $("input:radio").change(set_delivery);
                   $("#order").click(place_order);
                   $("#order").attr('disabled', true);
-                  
-                  
                   })
 
 
@@ -40,6 +38,7 @@ function place_order(){
         var propName = obj;
         dataToPass[propName] =  cart[propName][0];
     }
+    dataToPass['grandTotal'] = total;
 
     $.post("scripts/placeorder.php", dataToPass, function(data){
            var now = new Date();
