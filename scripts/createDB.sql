@@ -91,3 +91,11 @@ insert into orders values(1,'2012-11-23 12:00:00',12345,'Buddy Dog',1);
 insert into orders values(1,'2012-11-23 12:00:00',12345,'Blueberry Power Muffin',1);
 insert into orders values(1,'2012-11-23 12:00:00',12345,'Orange Juice',2);
 insert into orders values(1,'2012-11-25 12:00:00',12345,'Lemon Cake',1);
+
+insert into forum values(300,'I love Smart Cafe','2012-11-10 12:00:00');
+insert into forum values(301,'Good but not great!','2012-11-11 12:00:00');
+insert into forum values(302,'Definitely good','2012-11-12 12:00:00');
+insert into forum values(303,'I will never go back!','2012-11-13 12:00:00');
+insert into forum values(304,'Some foods are good but some are bad','2012-11-17 12:00:00');
+insert into forum values(305,'Go for it','2012-11-18 12:00:00');
+insert into forum values(306,'Haha, I know it.','2012-11-20 12:00:00');

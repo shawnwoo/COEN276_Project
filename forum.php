@@ -83,7 +83,7 @@ if(!$lastTweet) $lastTweet = "You don't have any tweets yet!";
 						<label for="inputField">Please input your reviews.</label>
 
 						<textarea name="inputField" id="inputField" tabindex="1"rows="2" cols="40"></textarea>
-						<input class="submitButton inact" name="submit" type="submit" value="update" />
+						<input class="submitButton inact" name="submit" type="submit" value="submit" />
 
 						<span class="latest"><strong>Latest: </strong><span id="lastTweet"><?=$lastTweet?></span></span>
 

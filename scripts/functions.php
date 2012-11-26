@@ -53,7 +53,7 @@ function formatTweet($tweet,$dt)
 	<li>
 	<a href="#"><img class="avatar" src="images/avatar.jpg" width="48" height="48" alt="avatar" /></a>
 	<div class="tweetTxt">
-	<strong><a href="#">forum</a></strong> '. preg_replace('/((?:http|https|ftp):\/\/(?:[A-Z0-9][A-Z0-9_-]*(?:\.[A-Z0-9][A-Z0-9_-]*)+):?(\d+)?\/?[^\s\"\']+)/i','<a href="$1" rel="nofollow" target="blank">$1</a>',$tweet).'
+	<strong><a href="#">Anonymous User</a></strong> '. preg_replace('/((?:http|https|ftp):\/\/(?:[A-Z0-9][A-Z0-9_-]*(?:\.[A-Z0-9][A-Z0-9_-]*)+):?(\d+)?\/?[^\s\"\']+)/i','<a href="$1" rel="nofollow" target="blank">$1</a>',$tweet).'
 	<div class="date">'.relativeTime($dt).'</div>
 	</div>
 	<div class="clear"></div>

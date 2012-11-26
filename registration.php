@@ -203,21 +203,25 @@
 						<form  >
 							<fieldset>
 								<legend>Budget Trackings</legend>
-									CampusID: 		<input type="text" name="campusIDB"><br>
-									MonthlyBudget:  <input type="text" name="budget" ><br>
+									<label style="width:20em;float:left;">CampusID: </label>
+									<input type="text" name="campusIDB"><br>
+									<label style="width:20em;float:left;">MonthlyBudget:  </label>
+									<input type="text" name="budget" ><br>
 									
-									<button type="button" onclick="showValue()">Load</button>
-									<button type="button" onclick="updateValue(document.getElementsByName('campusIDB')[0].value,'budget',document.getElementsByName('budget')[0].value)">Save</button>
+									<button type="button" onclick="showValue()" style="float:right;">Load</button>
+									<button type="button" style="float:right;" onclick="updateValue(document.getElementsByName('campusIDB')[0].value,'budget',document.getElementsByName('budget')[0].value)">Save</button>
 								    
 							</fieldset>
 							
 							<fieldset>
 								<legend>Nutritional Trackings</legend>
-									CampusID: <input type="text" name="campusIDN"><br>
-									Total Daily Calories: <input type="text" name="caloric"><br>
+									<label style="width:20em;float:left;">CampusID: </label>
+									<input type="text" name="campusIDN"><br>
+									<label style="width:20em;float:left;">Total Daily Calories:  </label>
+									<input type="text" name="caloric"><br>
 									
-									<button type="button" onclick="showCaloric()">Load</button>
-									<button type="button" onclick="updateValue(document.getElementsByName('campusIDN')[0].value,'caloric',document.getElementsByName('caloric')[0].value)">Save</button>
+									<button type="button" style="float:right;" onclick="showCaloric()">Load</button>
+									<button type="button"  style="float:right;" onclick="updateValue(document.getElementsByName('campusIDN')[0].value,'caloric',document.getElementsByName('caloric')[0].value)">Save</button>
 								
 									
 								
@@ -225,12 +229,15 @@
 							
 							
 							<fieldset>
-								<legend>Service Registration</legend>
-								CampusID: <input type="text" name="campusIDS"><br>
-								Registed to Budget Tracking: <input type="checkbox" name="regToB" /><br />
-								Registed to Nutritional Tracking: <input type="checkbox" name="regToN" /> <br />	
-								<button type="button" onclick="showService()">Load</button>
-								<button type="button" onclick="updateService(document.getElementsByName('campusIDS')[0].value)">Save</button>
+								<legend>Service Regi20emstration</legend>
+								<label style="width:20em;float:left;">CampusID: </label>
+								<input type="text" name="campusIDS"><br>
+								<label style="width:20em;float:left;">Registed to Budget Tracking: </label>
+								<input type="checkbox" name="regToB" /><br />
+								<label style="width:20em;float:left;">Registed to Nutritional Tracking: </label>
+								<input type="checkbox" name="regToN" /> <br />	
+								<button type="button"  style="float:right;" onclick="showService()">Load</button>
+								<button type="button"  style="float:right;" onclick="updateService(document.getElementsByName('campusIDS')[0].value)">Save</button>
 							</fieldset>
 									
 								
