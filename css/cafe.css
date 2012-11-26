@@ -25,7 +25,7 @@
 	margin-right:25px;
 	margin-bottom:25px;
 	border:1px solid black;
-	overflow:hidden;
+	/*overflow:hidden;*/
 }
 
 .foodImg{
@@ -92,6 +92,28 @@
     display:none;
     
 }
+
+
+.tooltip{
+    display:none;
+    /*position:absolute;*/
+    z-index:10;
+    /*left:-9999px;*/
+    background-color:#dedede;
+    /*padding:5px;
+    border:1px solid #fff;*/
+    width:200px;
+}
+
+.tooltip p{
+    margin:0;
+    padding:0;
+    color:#fff;
+    background-color:#222;
+    padding:2px 7px;
+}
+
+
 
 .cal{
 	padding-top:2px;

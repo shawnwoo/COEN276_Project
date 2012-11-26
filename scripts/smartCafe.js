@@ -27,7 +27,20 @@ $(document).ready(function(){
                   $("input:radio").change(set_delivery);
                   $("#order").click(place_order);
                   $("#order").attr('disabled', true);
+                  $(".itemFooter").hover(mousein, mouseout);
                   })
+
+
+function mousein(){
+    $(this).siblings(".tooltip").css({'display':'block'});
+    
+    
+    
+}
+
+function mouseout(){
+    $(this).siblings(".tooltip").hide();
+}
 
 
 function place_order(){
@@ -233,7 +246,7 @@ function validateUser()
                         budget = $("#budgetLimit").text();
                         balance = $("#balance").text();
                         if (balance < 100 ){
-                            alert( "There is less than $100")
+                            alert( "There is less than $100 in your balance!")
                         }
                     }
 

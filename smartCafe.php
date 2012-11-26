@@ -35,7 +35,7 @@
             echo "<img class='foodImg' src=" . $menuArray[$num]['imgSrc']. " alt='sushi'/>\n";
             echo "<div class='itemFooter'>\n";
             echo "<span class='descrip'> D </span>\n";
-            echo "<span class = 'hiddenDescrip'>".$menuArray[$num]['description']."</span>\n";
+            
             echo "<span class='cal'>".$menuArray[$num]['calories']."</span>\n";
             echo "<span class='order'>\n";
             echo "<label for='orderQty'>Order</label>\n";
@@ -46,6 +46,7 @@
             echo"</select>";
             echo "</span>";
             echo "</div>";
+            echo "<div class = 'tooltip'><p>".$menuArray[$num]['description']."</p></div>\n";
             echo "</div>\n\n\n";
         }
         
