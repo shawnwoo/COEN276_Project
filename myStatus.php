@@ -37,6 +37,8 @@ require "scripts/connect.php";
     	function drawVisualization(){
     		var chart_container=document.getElementById('chart_div');
 			var table_container=document.getElementById('table_div');
+			var costChart_container=document.getElementById('cost_chart_div');
+			var cost_table_container=document.getElementById('cost_table_div');
 			var response=$.ajax({
     	 			type:'GET',
     	 			url:'scripts/getChartData.php',
@@ -51,23 +53,49 @@ require "scripts/connect.php";
 
     					
     				}).responseText;
+			var responseCost=$.ajax({
+    	 			type:'GET',
+    	 			url:'scripts/getCostChartData.php',
+    					data:'id='+$('#campusID').val(),
+    				dataType:'json',
+    				async:false,
+
+    				success:function(result){
+    					
+    					return result;
+    				}
+
+    					
+    				}).responseText;
 
 
 			var source=jQuery.parseJSON(response);
+			var sourceCost=$.parseJSON(response);
 
 			
 
 			var data = new google.visualization.DataTable(response,0.6);
 			var dataview=new google.visualization.DataView(data);
+
+			var dataCost= new google.visualization.DataTable(responseCost);
 			
 
     		var options = {
           title: 'My Caloric Distribution'
         };
+
+        	var options2={title: 'My Cost Distribution'};
+
+
          var chart = new google.visualization.ColumnChart(chart_container);
          chart.draw(dataview,options);
         var table=new google.visualization.Table(table_container);
         table.draw(data,null);
+
+        var costChart=new google.visualization.ColumnChart(costChart_container);
+        var costTable=new google.visualization.Table(cost_table_container);
+        costChart.draw(dataCost,options2);
+        costTable.draw(dataCost);
 
 
 
@@ -140,6 +168,14 @@ require "scripts/connect.php";
 					 <div id="chart_div" style="width: 900px; height: 500px;"></div>
 					<div class="chartText">Table of Caloric Distribution</div>
 						<div id="table_div"style="width: 900px; height: 500px;"></div>
+						
+						<div class="chartText">Daily Cost Distribution	</div>
+					
+						
+					
+					 <div id="cost_chart_div" style="width: 900px; height: 500px;"></div>
+					<div class="chartText">Table of Cost Distribution</div>
+						<div id="cost_table_div"style="width: 900px; height: 500px;"></div>
 						
 
 
