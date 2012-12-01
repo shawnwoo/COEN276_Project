@@ -9,7 +9,8 @@ var discount = 0.00;
 var taxRate = 0.0825; 
 var tax = 0.00; 
 var total = 0.00; 
-var totalCal = 0; 
+var totalCal = 0;
+
 
 // user info
 var caloricLimit=0; 
@@ -72,9 +73,10 @@ function place_order(){
 function set_delivery(){
     
     delivery = $("input:radio:checked").val();
+    delivery = parseFloat(delivery);
     $("#delivery").text(delivery);
     total = get_total();
-    $("#total").text(total.toFixed(2));
+    $("#total").text(total.toFixed(2)  + " (" + totalCal + " cal)" );
     
 }
 
@@ -115,7 +117,7 @@ function update_qty(){
     
     
     
-    var selectedQty = this.value;
+    var selectedQty = this.value; 
     var itemName = this.id; 
     var price = $(this).closest(".item").children(".itemHeader").children(".price").text();
     price = price.substr(1);
@@ -125,7 +127,7 @@ function update_qty(){
     var linePrice = price * selectedQty;
     var calories = $(this).closest(".itemFooter").children(".cal").text();
     calories = parseFloat(calories);
-    var lineCalories = calories * selectedQty; 
+    var lineCalories = calories * selectedQty;
     cart[itemName]=[selectedQty, price, selectedQty*price, selectedQty*calories];
     subtotal = get_subtotal(cart); 
     total = get_total();
@@ -138,8 +140,9 @@ function update_qty(){
     if( $(foundItem).length ){
         
         if (selectedQty > 0){
-            $(foundItem).children(":last").text(linePrice.toFixed(2));
+            $(foundItem).children(":last").text(linePrice.toFixed(2) + " (" + lineCalories + " cal)" );
             $(foundItem).children(":first").text(itemName + " " + selectedQty + " at $" + price);
+            
             }
         else
             $(foundItem).remove();
@@ -151,7 +154,13 @@ function update_qty(){
         $("#orderDetails").prepend(stringToAppend);        
     }
     
-    $("#subtotal").text(subtotal.toFixed(2));
+    subtotal = get_subtotal(cart);
+    total = get_total(); 
+    totalCal = get_total_cal(cart);
+    
+    
+    
+    $("#subtotal").text(subtotal.toFixed(2)); 
     $("#discount").text(discount.toFixed(2));
     $("#tax").text(tax.toFixed(2));
     $("#delivery").text(delivery.toFixed(2));

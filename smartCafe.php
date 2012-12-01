@@ -32,7 +32,7 @@
             echo "<div class = 'itemHeader'><span class='itemName'>".$menuArray[$num]['item_name']."</span>";
             echo "<span class = 'type'>" . $menuArray[$num]['type']. "</span>";
             echo "<span class = 'price'>$".$menuArray[$num]['price']."</span></div>\n";
-            echo "<img class='foodImg' src=" . $menuArray[$num]['imgSrc']. " alt='sushi'/>\n";
+            echo "<img class='foodImg' src=" . $menuArray[$num]['imgSrc']. " alt='". $menuArray[$num]['item_name'] ."' width='170' height='145'/>\n";
             echo "<div class='itemFooter'>\n";
             
             
@@ -43,9 +43,9 @@
             echo "<option value='0'>0</option>\n";
             echo "<option value='1'>1</option>\n";
             echo "<option value='2'>2</option>\n";
-            echo "<option value='2'>3</option>\n";
-            echo "<option value='2'>4</option>\n";
-            echo "<option value='2'>5</option>\n";
+            echo "<option value='3'>3</option>\n";
+            echo "<option value='4'>4</option>\n";
+            echo "<option value='5'>5</option>\n";
             echo"</select>";
             echo "</span>";
             echo "</div>";
@@ -152,7 +152,7 @@
 						
 					</div>						
 			
-					<div class= "cafeHorizontal">
+					<div class= "cafeHorizontal fixedHeight" >
 						<p class = "foodCat"> Main Dishes </p>
                         <?php getItemInfo(0); ?>
                         <?php getItemInfo(1); ?>
@@ -161,7 +161,7 @@
 						
 					</div>
 					
-					<div class= "cafeHorizontal">
+					<div class= "cafeHorizontal fixedHeight">
 						<p class = "foodCat"> Sandwiches </p>
                         <?php getItemInfo(4); ?>
                         <?php getItemInfo(5); ?>
@@ -170,7 +170,7 @@
 
 					</div>
 
-					<div class= "cafeHorizontal">
+					<div class= "cafeHorizontal fixedHeight">
 						<p class = "foodCat"> Treats </p>
                         <?php getItemInfo(8); ?>
                         <?php getItemInfo(9); ?>
@@ -179,7 +179,7 @@
 
 					</div>
 
-					<div class= "cafeHorizontal">
+					<div class= "cafeHorizontal fixedHeight">
 						<p class = "foodCat"> Drinks</p>
                         <?php getItemInfo(12); ?>
                         <?php getItemInfo(13); ?>
