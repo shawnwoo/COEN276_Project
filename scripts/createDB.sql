@@ -55,10 +55,10 @@ create table users(
     balance dec(6,2)
 );
 
-insert into users values(12345, 500, 2500.00, 2000, 1, 1, 'V', 2500.00);
-insert into users values(23456, 500, 1500.00, 2500, 0, 0, 'V', 2500.00);
-insert into users values(123, 500, 1000.00, 1666, 1, 0, 'V', 2500.00);
-insert into users values(999, 500, 2500.00, 1000, 0, 1, 'V', 2500.00);
+insert into users values(12345, 500, 2500.00, 2000, 1, 1, 'V', 2000.00);
+insert into users values(23456, 500, 1500.00, 2500, 0, 0, 'V', 1500.00);
+insert into users values(123, 500, 1000.00, 1666, 1, 0, 'V', 1000.00);
+insert into users values(999, 500, 2500.00, 1000, 0, 1, 'V', 90.00);
 
 drop table if exists forum;
 CREATE TABLE `forum` (
