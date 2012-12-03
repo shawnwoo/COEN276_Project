@@ -226,11 +226,11 @@
 								<tr>
 									<td>
 										<form>
-											<input type="radio" name="deliveryopt" value="0.00"/>Pickup<br><br>
+											<input type="radio" name="deliveryopt" value="0.00" checked = "true"/>Pickup<br><br>
 											<input type="radio" name="deliveryopt" value="1.00"/>Deliver (add $1.00)
 										</form>
 									</td>
-									<td>Name<br />
+									<td>
 									<br />
 										<form action="">
 											<label for="building">Bldg</label> <select name="Bldg"><option

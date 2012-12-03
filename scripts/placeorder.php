@@ -1,6 +1,10 @@
 <?php
     session_start();
-    $userId = $_SESSION['userId'];
+    
+    if(isset($_SESSION['userId']))
+        $userId = $_SESSION['userId'];
+    else
+        $userId = 0;
     
     
     define('INCLUDE_CHECK',1);
@@ -44,6 +48,7 @@
     
     // return order number
     echo $orderNumber;
-    
+    unset($_SESSION['userId']);
+    session_destroy();
 
 ?>
